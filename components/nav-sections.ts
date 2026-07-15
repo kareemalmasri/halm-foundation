@@ -20,3 +20,8 @@ export const SECTION_HREFS: Record<NavSection, string> = {
   news: "/news",
   contact: "/contact",
 };
+
+// أقسام بطاقات "نظرة عامة" — تستبعد "الرئيسية" لأنها self-referential
+export const OVERVIEW_SECTIONS = NAV_SECTIONS.filter(
+  (key): key is Exclude<NavSection, "home"> => key !== "home"
+);
