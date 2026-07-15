@@ -7,7 +7,7 @@ export default function Navbar() {
   const t = useTranslations();
 
   return (
-    <header className="border-b border-gold/20 bg-navy">
+    <header className="border-b border-gold/20 bg-ink">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         {/* الشعار (نص مؤقت بلا صورة) */}
         <Link

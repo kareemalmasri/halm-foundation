@@ -5,7 +5,7 @@ export default function SectionsOverview() {
   const t = useTranslations();
 
   return (
-    <section className="bg-navy px-6 py-20">
+    <section className="bg-ink px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <h2 className="mb-10 text-center text-3xl font-bold text-gold">
           {t("sections.heading")}

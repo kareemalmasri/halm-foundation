@@ -13,7 +13,7 @@ export default function LocaleSwitcher() {
     <button
       type="button"
       onClick={() => router.replace(pathname, { locale: other })}
-      className="rounded border border-gold bg-maroon px-4 py-2 text-gold transition-opacity hover:opacity-90"
+      className="rounded border border-gold bg-ivory px-4 py-2 text-ink transition-opacity hover:opacity-90"
     >
       {other === "ar" ? "العربية" : "English"}
     </button>
