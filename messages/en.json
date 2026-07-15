@@ -7,5 +7,37 @@
     "memory": "Memory Bank",
     "news": "News",
     "contact": "Contact"
+  },
+  "hero": {
+    "title": "Reviving Damascus's Crafts & Living Memory",
+    "description": "A cultural foundation dedicated to preserving Damascus's artisanal heritage, training a new generation of craftspeople, and safeguarding the city's living memory for generations to come.",
+    "ctaPrimary": "Explore Our Mission",
+    "ctaSecondary": "Support Our Artisans"
+  },
+  "sections": {
+    "heading": "Explore Our Sections",
+    "items": {
+      "home": {
+        "description": "An overview of the foundation and its latest heritage initiatives."
+      },
+      "about": {
+        "description": "Our story, vision, and mission in preserving Damascene heritage."
+      },
+      "training": {
+        "description": "Programs that train artisans and pass traditional skills to new generations."
+      },
+      "memory": {
+        "description": "A living archive of Damascus's stories, images, and time-honored crafts."
+      },
+      "news": {
+        "description": "Our latest news, events, and announcements about the foundation's work."
+      },
+      "contact": {
+        "description": "Get in touch for partnership, support, or inquiries."
+      }
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
   }
 }
