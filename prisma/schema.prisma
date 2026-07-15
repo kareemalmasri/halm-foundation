@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ArchiveItem {
+  id            String   @id @default(cuid())
+  type          String
+  titleAr       String
+  titleEn       String
+  descriptionAr String?
+  descriptionEn String?
+  era           String?
+  theme         String?
+  artisanId     String?
+  artisan       Artisan? @relation(fields: [artisanId], references: [id])
+  location      String?
+  fileUrl       String
+  createdAt     DateTime @default(now())
+}
+
+model Artisan {
+  id        String        @id @default(cuid())
+  nameAr    String
+  nameEn    String
+  bioAr     String?
+  bioEn     String?
+  craftType String
+  city      String?
+  status    String
+  photoUrl  String?
+  items     ArchiveItem[]
+}
+
+model TrainingProgram {
+  id          String  @id @default(cuid())
+  year        Int
+  titleAr     String
+  titleEn     String
+  craftType   String
+  description String?
+  guidePdfUrl String?
+}
+
+model NewsPost {
+  id          String   @id @default(cuid())
+  type        String
+  titleAr     String
+  titleEn     String
+  contentAr   String?
+  contentEn   String?
+  imageUrl    String?
+  publishedAt DateTime @default(now())
+}
+
+model Partner {
+  id            String  @id @default(cuid())
+  name          String
+  logoUrl       String?
+  website       String?
+  descriptionAr String?
+  descriptionEn String?
+  category      String
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}
