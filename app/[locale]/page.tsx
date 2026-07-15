@@ -12,10 +12,11 @@ const NAV_KEYS = [
 
 export default function HomePage() {
   const t = useTranslations("navbar");
+  const tRoot = useTranslations();
 
   return (
     <main className="min-h-screen bg-navy flex flex-col items-center justify-center gap-8 p-8">
-      <h1 className="text-4xl font-bold text-gold">حلم دمشقي</h1>
+      <h1 className="text-4xl font-bold text-gold">{tRoot("siteName")}</h1>
       <nav className="flex flex-wrap justify-center gap-4 text-gold/80">
         {NAV_KEYS.map((key) => (
           <span key={key}>{t(key)}</span>
