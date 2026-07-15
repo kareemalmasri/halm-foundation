@@ -10,6 +10,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ألوان ثيم "حلم دمشقي" */
+  --color-navy: #110559;
+  --color-maroon: #6b0505;
+  --color-gold: #c9a24b;
 }
 
 @media (prefers-color-scheme: dark) {
