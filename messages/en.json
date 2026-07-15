@@ -38,6 +38,11 @@
     }
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "X (Twitter)"
+    }
   }
 }

@@ -50,7 +50,7 @@ export default async function LocaleLayout({
       dir={dir}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ink">
+      <body className="min-h-full flex flex-col bg-ink" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}

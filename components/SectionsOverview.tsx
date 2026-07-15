@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
-import { NAV_SECTIONS } from "@/components/nav-sections";
+import { Link } from "@/i18n/navigation";
+import { NAV_SECTIONS, SECTION_HREFS } from "@/components/nav-sections";
+import { SECTION_ICONS } from "@/components/icons";
 
 export default function SectionsOverview() {
   const t = useTranslations();
@@ -12,20 +14,27 @@ export default function SectionsOverview() {
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {NAV_SECTIONS.map((key) => (
-            <article
-              key={key}
-              id={key}
-              className="scroll-mt-24 rounded-lg border border-gold/30 bg-white/5 p-6 transition-colors hover:border-gold"
-            >
-              <h3 className="mb-3 text-xl font-semibold text-gold">
-                {t(`navbar.${key}`)}
-              </h3>
-              <p className="leading-relaxed text-white/70">
-                {t(`sections.items.${key}.description`)}
-              </p>
-            </article>
-          ))}
+          {NAV_SECTIONS.map((key) => {
+            const Icon = SECTION_ICONS[key];
+            return (
+              <Link
+                key={key}
+                id={key}
+                href={SECTION_HREFS[key]}
+                className="scroll-mt-24 flex flex-col gap-4 rounded-lg bg-ivory p-6 text-ink transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold/30"
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <h3 className="text-xl font-semibold text-ink">
+                  {t(`navbar.${key}`)}
+                </h3>
+                <p className="leading-relaxed text-ink/70">
+                  {t(`sections.items.${key}.description`)}
+                </p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
