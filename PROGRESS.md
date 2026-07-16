@@ -46,6 +46,18 @@
 - طُبِّق على كل الصفحات الفرعية الموجودة: `/about/story`, `/about/team`, `/about/vision`, و`/training/damascene`, `/training/armenian`, `/training/archive`, `/training/2026`.
 - **الحالة**: تم حل الملاحظة المعلّقة السابقة بخصوص التنقّل (كانت مسجّلة أدناه) — أصبحت نمطاً قياسياً يُطبَّق تلقائياً عند بناء أي صفحة فرعية جديدة (Memory Bank, News لاحقاً).
 
+## 7. بنك الذاكرة — الجزء الأول (الأرشيف + الفلاتر)
+- **أول استهلاك فعلي لـPrisma Client في الواجهة.** Singleton في [lib/prisma.ts](lib/prisma.ts).
+- **اكتشاف مهم في عميل Prisma 7 المولَّد**: الخيار `datasourceUrl` **أُزيل** — العميل يقبل إمّا `adapter` وإمّا `accelerateUrl`. بما أن `DATABASE_URL` هو `prisma+postgres://...` (Prisma Postgres عبر Accelerate)، يُمرَّر كـ`new PrismaClient({ accelerateUrl: ... })`. (schema.prisma بلا `url` في datasource، فلا قراءة تلقائية للبيئة.)
+- **[prisma/seed.ts](prisma/seed.ts)**: يُدخل 5 حرفيين + 14 عنصر أرشيف (photo/document/audio، 3 عصور، مواضيع متنوعة)، 7 عناصر مرتبطة بحرفيين. يُشغَّل بـ`npx tsx prisma/seed.ts`. سُجِّل في `prisma.config.ts` تحت `migrations.seed`. **تم إدخاله فعلياً في القاعدة الحقيقية** (تأكيد مباشر: total=14, artisans=5).
+- **تبعية جديدة**: `tsx` (devDependency) لتشغيل سكربتات TS مثل seed.
+- **[app/[locale]/memory-bank/page.tsx](app/[locale]/memory-bank/page.tsx)**: Server Component async يجلب من القاعدة عبر `prisma.archiveItem.findMany({ where })`. `params`/`searchParams` كـ`Promise` (نمط Next 16).
+- **الفلاتر تعمل فعلياً عبر URL search params — لا فلترة عميل وهمية**: النوع (`type`) والعصر (`era`) يُبنيان في شرط `WHERE` حقيقي. القيم تُتحقَّق عبر قائمة بيضاء في [lib/archive-filters.ts](lib/archive-filters.ts) (مدخل غير صالح = يُتجاهَل، بلا فلتر). شريط الفلاتر [components/MemoryFilterBar.tsx](components/MemoryFilterBar.tsx) نموذج `GET` أصلي (Server Component)، وجهته المسار المُلغَّم باللغة عبر `getPathname`.
+- **تُحقِّق يدوياً**: عدد بطاقات `<article>` المُصيَّرة يطابق تماماً `count` من القاعدة لكل فلتر (photo=7, document=4, audio=3, mandate=6, contemporary=4, audio+mandate=1, document+contemporary=0). حالة "لا نتائج" تظهر بنصها الصحيح بالعربية والإنجليزية.
+- بطاقة أرشيف [components/ArchiveCard.tsx](components/ArchiveCard.tsx) بنفس أسلوب `bg-ivory` مع شارة النوع وعنوان العصر. أيقونات جديدة: `PhotoIcon`, `DocumentIcon`, `AudioIcon` + خريطة `ARCHIVE_TYPE_ICONS`.
+- namespace `memoryBank` في ملفي الترجمة. Breadcrumb مضاف. `SECTION_HREFS.memory` عُدِّل من `/memory` إلى `/memory-bank` (رابط Navbar يعمل).
+- **لم تُبنَ** باقي الأقسام الفرعية لبنك الذاكرة (التراث المهدَّد، كنوز بشرية حية، المعرض، الأرشيف الصوتي، الخط الزمني) — عمداً، ستُبنى تباعاً.
+
 ## تحسينات بصرية مؤجَّلة (بعد اكتمال كل الأقسام الوظيفية)
 - [ ] إضافة تأثيرات hover فخمة عبر الموقع (بطاقات، أزرار، روابط) — توهج ذهبي، انتقالات ناعمة، لا تأثيرات بسيطة افتراضية.
 - [ ] إعادة تصميم زر تبديل اللغة (AR/EN) ليكون أكثر تميزاً بصرياً بدل الزر النصي البسيط الحالي.
@@ -53,6 +65,7 @@
 
 ## للمتابعة في الجلسة القادمة
 - **مشكلة Navbar على الجوال** (< ~420px): الروابط لا تلتفّ بشكل صحيح، تحتاج معالجة منفصلة (لم تُحل بعد).
-- صفحات الأقسام المتبقية (`/memory`, `/news`, `/contact`) غير مبنية بعد — فقط الروابط جاهزة. عند بنائها، طبّق نفس نمط `Breadcrumb` المستخدم في `/about` و`/training`.
-- ربط النماذج الستة فعلياً بواجهات المستخدم (لا يوجد استهلاك حقيقي للـPrisma Client في الواجهة بعد).
+- صفحات الأقسام المتبقية (`/news`, `/contact`) غير مبنية بعد — فقط الروابط جاهزة. عند بنائها، طبّق نفس نمط `Breadcrumb`. (`/memory-bank` بُني جزئياً — الأرشيف + الفلاتر فقط، انظر القسم 7.)
+- **الأقسام الفرعية المتبقية لبنك الذاكرة**: التراث المهدَّد، كنوز بشرية حية، المعرض، الأرشيف الصوتي، الخط الزمني — تُبنى تباعاً بنفس نمط القسم 7 (استعلام Prisma حقيقي + فلاتر URL عند اللزوم).
+- ربط باقي النماذج بواجهات المستخدم: `Artisan` جاهز في القاعدة ومرتبط بالعناصر لكن لا واجهة تعرضه بعد؛ `TrainingProgram`, `NewsPost`, `Partner`, `ContactMessage` بلا استهلاك واجهة بعد.
 - زر "تحميل دليل التدريب" في `/training/2026` بلا وظيفة فعلية بعد (لا ملف مرفق) — يحتاج ربطاً بملف PDF حقيقي لاحقاً.

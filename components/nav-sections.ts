@@ -16,7 +16,7 @@ export const SECTION_HREFS: Record<NavSection, string> = {
   home: "/",
   about: "/about",
   training: "/training",
-  memory: "/memory",
+  memory: "/memory-bank",
   news: "/news",
   contact: "/contact",
 };

@@ -177,6 +177,46 @@ export function DownloadIcon(props: IconProps) {
   );
 }
 
+export function PhotoIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="5" width="17" height="14" rx="2" />
+      <circle cx="8.5" cy="10" r="1.5" />
+      <path d="m4 17 4.5-4.5 3.5 3.5 3-3L20 16.5" />
+    </svg>
+  );
+}
+
+export function DocumentIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 3.5h7l5 5V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V3.5Z" />
+      <path d="M13 3.5V8.5h5" />
+      <path d="M9 13h6M9 16h6" />
+    </svg>
+  );
+}
+
+export function AudioIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 14v-4h3l4-3.5v11L7 14H4Z" />
+      <path d="M15 9c1 .9 1.5 1.9 1.5 3s-.5 2.1-1.5 3" />
+      <path d="M17.5 6.5c1.8 1.4 2.7 3.3 2.7 5.5s-.9 4.1-2.7 5.5" />
+    </svg>
+  );
+}
+
+// أيقونة نوع عنصر الأرشيف حسب `type`
+export const ARCHIVE_TYPE_ICONS: Record<
+  string,
+  (props: IconProps) => React.JSX.Element
+> = {
+  photo: PhotoIcon,
+  document: DocumentIcon,
+  audio: AudioIcon,
+};
+
 export const SECTION_ICONS: Record<
   NavSection,
   (props: IconProps) => React.JSX.Element

@@ -142,5 +142,34 @@
       },
       "download": "Download Training Guide"
     }
+  },
+  "memoryBank": {
+    "hero": {
+      "title": "Memory Bank",
+      "summary": "A living archive gathering Damascus's photographs, documents, and audio recordings, preserving the city's stories and crafts for generations to come."
+    },
+    "filters": {
+      "heading": "Filter Results",
+      "type": "Type",
+      "era": "Era",
+      "all": "All",
+      "apply": "Apply",
+      "reset": "Reset",
+      "resultsCount": "{count} items"
+    },
+    "types": {
+      "photo": "Photo",
+      "document": "Document",
+      "audio": "Audio"
+    },
+    "eras": {
+      "ottoman-late": "Late Ottoman",
+      "mandate": "Mandate Era",
+      "contemporary": "Contemporary"
+    },
+    "empty": {
+      "title": "No Results",
+      "description": "No items matched the selected filters. Try changing the type or era."
+    }
   }
 }
