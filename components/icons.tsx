@@ -98,6 +98,55 @@ export function XIcon(props: IconProps) {
   );
 }
 
+export function MenuIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
+export function UserIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M4.5 20c1.4-3.7 4.4-5.5 7.5-5.5s6.1 1.8 7.5 5.5" />
+    </svg>
+  );
+}
+
+export function ScrollIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 4.5h9A2.5 2.5 0 0 1 17.5 7v12" />
+      <path d="M6 4.5A2 2 0 0 0 4 6.5v11A2.5 2.5 0 0 0 6.5 20H17.5" />
+      <path d="M17.5 20a2.5 2.5 0 0 0 2.5-2.5V17h-3" />
+      <path d="M8 9h6M8 12.5h6" />
+    </svg>
+  );
+}
+
+export function UsersIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3.5 19c1.1-3.2 3.3-4.8 5.5-4.8s4.4 1.6 5.5 4.8" />
+      <circle cx="17" cy="8.5" r="2.3" />
+      <path d="M15.5 14.5c1.9.4 3.3 1.9 4 4.2" />
+    </svg>
+  );
+}
+
+export function TargetIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="8" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="12" cy="12" r="0.6" fill="currentColor" />
+    </svg>
+  );
+}
+
 export const SECTION_ICONS: Record<
   NavSection,
   (props: IconProps) => React.JSX.Element

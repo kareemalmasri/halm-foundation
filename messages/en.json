@@ -6,7 +6,8 @@
     "training": "Training Center",
     "memory": "Memory Bank",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu"
   },
   "hero": {
     "title": "Reviving Damascus's Crafts & Living Memory",
@@ -40,6 +41,45 @@
       "facebook": "Facebook",
       "instagram": "Instagram",
       "twitter": "X (Twitter)"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "summary": "Damascene Dream is a nonprofit cultural foundation working to preserve Damascus's artisanal heritage and document the city's memory, through training, archiving, and community partnerships."
+    },
+    "links": {
+      "story": "Our Story",
+      "storyDescription": "How the idea began and grew into a foundation working on the ground.",
+      "team": "Our Team",
+      "teamDescription": "The people leading the foundation's mission every day.",
+      "vision": "Our Vision & Goals",
+      "visionDescription": "Where we're headed, and what we aim to achieve."
+    },
+    "story": {
+      "title": "Our Story",
+      "paragraph1": "The idea for Damascene Dream began with a group of people passionate about Damascene heritage, who set out to document traditional crafts at risk of disappearing, after noticing a marked decline in practicing artisans and weak interest in passing these skills to new generations.",
+      "paragraph2": "Since our founding, we've built a network of artisans, volunteers, and partner institutions, and launched training and archiving programs aimed at faithfully preserving this living heritage and passing it on, while embracing contemporary tools and methods that keep it accessible to new generations."
+    },
+    "team": {
+      "title": "Our Team",
+      "intro": "A group of specialists and volunteers united by a shared passion for Damascene heritage.",
+      "members": {
+        "member1": { "name": "Layla Al-Halabi", "role": "Founder & Executive Director" },
+        "member2": { "name": "Samer Kabbani", "role": "Head of Traditional Crafts" },
+        "member3": { "name": "Rana Diab", "role": "Training Programs Coordinator" },
+        "member4": { "name": "Omar Nassif", "role": "Memory Bank & Archive Curator" }
+      }
+    },
+    "vision": {
+      "title": "Our Vision & Goals",
+      "intro": "We look forward to a future where Damascene crafts remain alive and thriving, and the city's memory is preserved and accessible to all.",
+      "goals": {
+        "goal1": "Document endangered Damascene handicrafts before they disappear.",
+        "goal2": "Train a new generation of artisans and pass on traditional skills.",
+        "goal3": "Build a living digital archive preserving the city's stories, images, and crafts.",
+        "goal4": "Strengthen local and international partnerships to sustain this heritage."
+      }
     }
   }
 }
