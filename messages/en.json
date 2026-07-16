@@ -81,5 +81,66 @@
         "goal4": "Strengthen local and international partnerships to sustain this heritage."
       }
     }
+  },
+  "training": {
+    "hero": {
+      "title": "Training Center",
+      "summary": "Training programs that pass on Damascene and Armenian handicraft skills to a new generation of artisans, through hands-on workshops and a documented archive of past programs."
+    },
+    "links": {
+      "damascene": "Damascene Crafts",
+      "damasceneDescription": "Training programs in traditional Damascene handicrafts.",
+      "armenian": "Armenian Crafts",
+      "armenianDescription": "Training programs in traditional Armenian handicrafts.",
+      "archive": "Program Archive",
+      "archiveDescription": "A timeline of training programs from 2016 to 2025.",
+      "current": "2026 Program",
+      "currentDescription": "Details of the current 2026 training program."
+    },
+    "damascene": {
+      "title": "Damascene Crafts",
+      "intro": "Training specialties preserving the finest Damascene handicrafts.",
+      "specialties": {
+        "s1": { "title": "Damascene Calligraphy", "description": "Teaching Arabic calligraphy fundamentals in the traditional Damascene style." },
+        "s2": { "title": "Mosaic Art", "description": "Assembling colored mosaic pieces in Damascene decorative patterns." },
+        "s3": { "title": "Copper Engraving", "description": "Engraving copper vessels and plates with traditional hand tools." },
+        "s4": { "title": "Mother-of-Pearl Inlay", "description": "Inlaying wood with mother-of-pearl in the Damascene mosaic technique." },
+        "s5": { "title": "Brocade Weaving", "description": "Weaving fine Damascene fabric with silk and gold threads." }
+      }
+    },
+    "armenian": {
+      "title": "Armenian Crafts",
+      "intro": "Training specialties preserving traditional Armenian handicrafts.",
+      "specialties": {
+        "s1": { "title": "Silversmithing", "description": "Shaping jewelry and silver pieces using traditional Armenian techniques." },
+        "s2": { "title": "Armenian Embroidery", "description": "Embroidering fabrics with inherited Armenian stitches and patterns." },
+        "s3": { "title": "Carpet Weaving", "description": "Hand-weaving carpets with authentic Armenian colors and motifs." },
+        "s4": { "title": "Armenian Pottery", "description": "Shaping and decorating ceramic vessels in the classic Armenian style." }
+      }
+    },
+    "archive": {
+      "title": "Program Archive",
+      "intro": "A timeline of training programs delivered over the years.",
+      "timeline": {
+        "y2016": "Founding program to train beginner artisans.",
+        "y2018": "Advanced workshops in Damascene engraving and ornamentation.",
+        "y2020": "Digital documentation program for veteran artisans' techniques.",
+        "y2022": "Training partnership with Armenian craft institutions.",
+        "y2024": "Trainer certification program for graduate artisans.",
+        "y2025": "Program expansion to include remote workshops."
+      }
+    },
+    "current": {
+      "title": "2026 Program",
+      "description": "The 2026 program combines hands-on in-workshop training with field mentorship from experienced artisans, aiming to graduate a new cohort of skilled artisans ready to pass these crafts on in turn.",
+      "componentsTitle": "Program Components",
+      "components": {
+        "c1": "Weekly hands-on workshops with experienced artisans.",
+        "c2": "One-on-one mentoring to track each trainee's progress.",
+        "c3": "Field visits to historic artisan workshops.",
+        "c4": "Closing exhibition showcasing trainees' work."
+      },
+      "download": "Download Training Guide"
+    }
   }
 }

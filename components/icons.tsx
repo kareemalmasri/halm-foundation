@@ -147,6 +147,36 @@ export function TargetIcon(props: IconProps) {
   );
 }
 
+export function ChiselIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M5 5 19 19" />
+      <path d="M13 5h6v6" />
+      <path d="m5 19 3-8 5 5-8 3Z" />
+    </svg>
+  );
+}
+
+export function KnotIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="9" cy="9" r="4" />
+      <circle cx="15" cy="15" r="4" />
+      <path d="M9 5v8M5 9h8M15 11v8M11 15h8" />
+    </svg>
+  );
+}
+
+export function DownloadIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4v11" />
+      <path d="m7.5 11 4.5 4.5 4.5-4.5" />
+      <path d="M5 19.5h14" />
+    </svg>
+  );
+}
+
 export const SECTION_ICONS: Record<
   NavSection,
   (props: IconProps) => React.JSX.Element

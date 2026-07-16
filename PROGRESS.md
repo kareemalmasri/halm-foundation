@@ -32,7 +32,22 @@
 - **النتيجة**: `npx prisma migrate dev --name init` نجحت فعلياً — الجداول الستة مُنشأة في القاعدة الحقيقية (migration محفوظة في `prisma/migrations/20260715222309_init/`)، والـclient مولَّد في `generated/prisma`.
 - ملاحظة: `@prisma/extension-accelerate` **غير مطلوبة** للاتصال الأساسي — فقط لميزات إضافية اختيارية (Edge caching). القاعدة "Prisma Postgres" تفهم بروتوكول `prisma+postgres://` أصلاً.
 
+## 5. مركز التدريب
+- **[app/[locale]/training/page.tsx](app/[locale]/training/page.tsx)**: صفحة رئيسية بنفس نمط `/about` — نبذة + 4 بطاقات `CardLink` (الحرف الدمشقية، الحرف الأرمنية، أرشيف البرامج، برنامج 2026).
+- **`/training/damascene`** و **`/training/armenian`**: قوائم تخصصات وهمية (5 و4 على التوالي) ببطاقات بسيطة (عنوان + وصف سطر واحد).
+- **`/training/archive`**: قائمة زمنية (2016–2025) بتصميم خط جانبي (`border-s-2`) يدعم RTL/LTR تلقائياً.
+- **`/training/2026`**: وصف فقرة + قائمة مكوّنات مرقّمة + زر "تحميل دليل التدريب" (placeholder بلا ملف فعلي).
+- كل المحتوى تحت namespace `training` في `messages/ar.json`/`en.json` — نصوص مؤقتة (placeholder) ستُستبدل لاحقاً.
+- أيقونات جديدة أُضيفت في [components/icons.tsx](components/icons.tsx): `ChiselIcon`, `KnotIcon`, `DownloadIcon`.
+- رابط Navbar لـ"مركز التدريب" كان جاهزاً مسبقاً عبر `nav-sections.ts` (`SECTION_HREFS.training = "/training"`) — لم يحتج تعديل.
+
+## 6. التنقّل الداخلي (Breadcrumb)
+- مكوّن جديد [components/Breadcrumb.tsx](components/Breadcrumb.tsx): قائمة "الرئيسية > القسم > الصفحة الحالية"، آخر عنصر بلا رابط (الصفحة الحالية) بلون `gold`، البقية روابط قابلة للنقر.
+- طُبِّق على كل الصفحات الفرعية الموجودة: `/about/story`, `/about/team`, `/about/vision`, و`/training/damascene`, `/training/armenian`, `/training/archive`, `/training/2026`.
+- **الحالة**: تم حل الملاحظة المعلّقة السابقة بخصوص التنقّل (كانت مسجّلة أدناه) — أصبحت نمطاً قياسياً يُطبَّق تلقائياً عند بناء أي صفحة فرعية جديدة (Memory Bank, News لاحقاً).
+
 ## للمتابعة في الجلسة القادمة
 - **مشكلة Navbar على الجوال** (< ~420px): الروابط لا تلتفّ بشكل صحيح، تحتاج معالجة منفصلة (لم تُحل بعد).
-- صفحات الأقسام الفعلية (`/about`, `/training`, `/memory`, `/news`, `/contact`) غير مبنية بعد — فقط الروابط جاهزة.
+- صفحات الأقسام المتبقية (`/memory`, `/news`, `/contact`) غير مبنية بعد — فقط الروابط جاهزة. عند بنائها، طبّق نفس نمط `Breadcrumb` المستخدم في `/about` و`/training`.
 - ربط النماذج الستة فعلياً بواجهات المستخدم (لا يوجد استهلاك حقيقي للـPrisma Client في الواجهة بعد).
+- زر "تحميل دليل التدريب" في `/training/2026` بلا وظيفة فعلية بعد (لا ملف مرفق) — يحتاج ربطاً بملف PDF حقيقي لاحقاً.
