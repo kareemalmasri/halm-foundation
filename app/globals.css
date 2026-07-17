@@ -3,18 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* افتراضي (إنجليزي): Cormorant Garamond */
+  --font-body: var(--font-cormorant);
+    font-size: 1.1rem;
+}
+
+/* عربي: Amiri — يُطبَّق تلقائياً على كل الموقع عبر --font-sans بلا تكرار بالمكوّنات */
+html[lang="ar"] {
+  --font-body: var(--font-amiri);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
 
   /* ألوان ثيم "حلم دمشقي" */
   --color-ink: #1a1410;
-  --color-ivory: #F7F0DC;
-  --color-gold: #c9a24b;
+  --color-ivory: #f7f0dc;
+  --color-gold: #ffb105c2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,5 +34,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

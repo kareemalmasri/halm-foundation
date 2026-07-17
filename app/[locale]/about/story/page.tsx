@@ -6,7 +6,7 @@ export default function StoryPage() {
   const tStory = useTranslations("about.story");
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-3xl">
         <Breadcrumb
           items={[
@@ -18,10 +18,10 @@ export default function StoryPage() {
 
         <h1 className="mt-6 text-4xl font-bold text-gold">{tStory("title")}</h1>
         <div className="mt-8 flex flex-col gap-6">
-          <p className="text-lg leading-relaxed text-white/70">
+          <p className="text-2xl leading-relaxed text-white/70">
             {tStory("paragraph1")}
           </p>
-          <p className="text-lg leading-relaxed text-white/70">
+          <p className="text-2xl leading-relaxed text-white/70">
             {tStory("paragraph2")}
           </p>
         </div>

@@ -51,7 +51,7 @@ export default function Navbar() {
         </Link>
 
         {/* روابط سطح المكتب — تنقّل حقيقي لكل قسم */}
-        <nav className="hidden flex-wrap items-center gap-x-6 gap-y-2 text-base sm:flex">
+        <nav className="hidden flex-wrap items-center gap-x-15 gap-y-2 text-base sm:flex">
           {NAV_SECTIONS.map((key) => renderLink(key))}
         </nav>
 
