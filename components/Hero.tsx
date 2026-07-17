@@ -5,7 +5,7 @@ export default function Hero() {
   const t = useTranslations("hero");
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink px-6 py-24 sm:py-32">
+    <section className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-ink px-6 py-16 sm:min-h-[640px] sm:py-20">
       {/* صورة الخلفية — next/image بخاصية fill */}
       <Image
         src="/images/hero-background.png"
