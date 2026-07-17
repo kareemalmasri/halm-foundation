@@ -172,5 +172,62 @@
       "title": "No Results",
       "description": "No items matched the selected filters. Try changing the type or era."
     }
+  },
+  "contact": {
+    "hero": {
+      "title": "Get in Touch",
+      "summary": "Have a question, a suggestion, or want to collaborate with us? Send us a message and we'll get back to you as soon as possible."
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject (optional)",
+      "message": "Message"
+    },
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": "Your message has been sent successfully. Thank you for reaching out!",
+    "errors": {
+      "validation": "Please fill in your name and message, and make sure your email address is valid.",
+      "generic": "We couldn't send your message right now. Please try again later."
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "News",
+      "summary": "The foundation's latest updates: training programs, Memory Bank additions, partnerships, and community events."
+    },
+    "items": {
+      "item1": {
+        "date": "July 10, 2026",
+        "title": "The 2026 Training Program Kicks Off",
+        "summary": "The new cohort of Damascene and Armenian craft trainees began their weekly hands-on workshops, mentored by experienced artisans over the coming months."
+      },
+      "item2": {
+        "date": "June 2, 2026",
+        "title": "New Audio Archive Added to the Memory Bank",
+        "summary": "This month we documented a collection of rare audio recordings of Damascene artisans recounting the stories of their trades, now part of the foundation's living archive."
+      },
+      "item3": {
+        "date": "April 20, 2026",
+        "title": "Community Exhibition of Trainees' Work",
+        "summary": "We hosted an open exhibition showcasing pieces made by program trainees, attended by their families, neighborhood residents, and veteran artisans."
+      },
+      "item4": {
+        "date": "March 8, 2026",
+        "title": "New Partnership with Armenian Craft Institutions",
+        "summary": "We signed a cooperation agreement enabling the exchange of expertise and trainers with partner institutions dedicated to preserving traditional Armenian crafts."
+      },
+      "item5": {
+        "date": "February 14, 2026",
+        "title": "A New Batch of Historical Documents Preserved",
+        "summary": "A collection of documents and correspondence from the late Ottoman and Mandate eras was added to the Memory Bank after restoration and digital cataloging."
+      },
+      "item6": {
+        "date": "January 5, 2026",
+        "title": "Call for Volunteers in the Archiving Project",
+        "summary": "We launched a call to welcome new volunteers to help collect and document photographs and oral histories related to Damascus's artisanal heritage."
+      }
+    }
   }
 }
