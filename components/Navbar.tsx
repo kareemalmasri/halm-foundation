@@ -11,7 +11,7 @@ import { MenuIcon, XIcon } from "@/components/icons";
 // أساس الأنماط المشترك بين روابط الـNavbar: أبيض افتراضياً، ذهبي عند hover،
 // وخط سفلي بعرض الكلمة يتوسّع من العرض 0 إلى 1 (transform، لا width) عند hover فقط.
 const LINK_BASE =
-  "group relative inline-block text-white/90 transition-colors duration-300 hover:text-gold";
+  "group relative inline-block w-fit text-white/90 transition-colors duration-300 hover:text-gold";
 const LINK_UNDERLINE =
   "pointer-events-none absolute inset-x-0 -bottom-1 h-px origin-center scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100";
 
