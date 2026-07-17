@@ -9,7 +9,7 @@ export default function VisionPage() {
   const tVision = useTranslations("about.vision");
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-3xl">
         <Breadcrumb
           items={[
@@ -20,7 +20,7 @@ export default function VisionPage() {
         />
 
         <h1 className="mt-6 text-4xl font-bold text-gold">{tVision("title")}</h1>
-        <p className="mt-6 text-lg leading-relaxed text-white/70">
+        <p className="mt-6 text-xl leading-relaxed text-white/70">
           {tVision("intro")}
         </p>
 
@@ -30,7 +30,7 @@ export default function VisionPage() {
               <span className="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-gold/15 text-gold">
                 <TargetIcon className="h-3.5 w-3.5" />
               </span>
-              <span className="text-lg leading-relaxed text-white/80">
+              <span className="text-xl leading-relaxed text-white/80">
                 {tVision(`goals.${key}`)}
               </span>
             </li>

@@ -3,14 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* افتراضي (إنجليزي): Cormorant Garamond */
+  /* افتراضي (إنجليزي): Cormorant Garamond — بلا تكبير إضافي (النص الإنجليزي أطول عادةً فيحتاج مساحة أقل لكل حرف) */
   --font-body: var(--font-cormorant);
-    font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* عربي: Amiri — يُطبَّق تلقائياً على كل الموقع عبر --font-sans بلا تكرار بالمكوّنات */
 html[lang="ar"] {
   --font-body: var(--font-amiri);
+  font-size: 1.1rem;
 }
 
 @theme inline {

@@ -26,7 +26,7 @@ export default function ArchiveCard({
         </span>
       </div>
 
-      <h3 className="text-lg font-semibold text-ink">{title}</h3>
+      <h3 className="text-xl font-semibold text-ink">{title}</h3>
 
       {description && (
         <p className="text-sm leading-relaxed text-ink/70">{description}</p>

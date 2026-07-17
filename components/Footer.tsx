@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-gold/20 bg-ink px-6 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center">
-        <span className="text-lg font-bold text-gold">{t("siteName")}</span>
+        <span className="text-xl font-bold text-gold">{t("siteName")}</span>
 
         <div className="flex items-center justify-center gap-4">
           {SOCIAL_PLATFORMS.map(({ key, Icon }) => (

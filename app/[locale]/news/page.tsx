@@ -16,7 +16,7 @@ export default function NewsPage() {
   const tNews = useTranslations("news");
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-3xl">
         <Breadcrumb
           items={[
@@ -29,7 +29,7 @@ export default function NewsPage() {
           <h1 className="text-4xl font-bold text-gold sm:text-5xl">
             {tNews("hero.title")}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/70">
             {tNews("hero.summary")}
           </p>
         </div>

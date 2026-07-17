@@ -14,7 +14,7 @@ export default function NewsCard({ title, date, summary }: NewsCardProps) {
       </span>
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <span className="text-xs font-medium text-gold">{date}</span>
-        <h3 className="text-lg font-semibold text-ink sm:text-xl">{title}</h3>
+        <h3 className="text-xl font-semibold text-ink sm:text-2xl">{title}</h3>
         <p className="leading-relaxed text-ink/70">{summary}</p>
       </div>
     </article>

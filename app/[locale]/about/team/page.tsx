@@ -9,7 +9,7 @@ export default function TeamPage() {
   const tTeam = useTranslations("about.team");
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-5xl">
         <Breadcrumb
           items={[
@@ -22,7 +22,7 @@ export default function TeamPage() {
 
       <div className="mx-auto mt-6 max-w-5xl text-center">
         <h1 className="text-4xl font-bold text-gold">{tTeam("title")}</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
+        <p className="mx-auto mt-4 max-w-2xl text-xl leading-relaxed text-white/70">
           {tTeam("intro")}
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function TeamPage() {
             <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gold/15 text-gold">
               <UserIcon className="h-10 w-10" />
             </span>
-            <h3 className="text-lg font-semibold text-ink">
+            <h3 className="text-xl font-semibold text-ink">
               {tTeam(`members.${key}.name`)}
             </h3>
             <p className="text-sm text-ink/60">{tTeam(`members.${key}.role`)}</p>

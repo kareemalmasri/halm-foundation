@@ -8,7 +8,7 @@ export default function CurrentProgramPage() {
   const t = useTranslations();
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-3xl">
         <Breadcrumb
           items={[
@@ -21,7 +21,7 @@ export default function CurrentProgramPage() {
         <h1 className="mt-6 text-4xl font-bold text-gold">
           {t("training.current.title")}
         </h1>
-        <p className="mt-6 text-lg leading-relaxed text-white/70">
+        <p className="mt-6 text-xl leading-relaxed text-white/70">
           {t("training.current.description")}
         </p>
 
@@ -36,7 +36,7 @@ export default function CurrentProgramPage() {
                   {COMPONENT_KEYS.indexOf(key) + 1}
                 </span>
               </span>
-              <span className="text-lg leading-relaxed text-white/80">
+              <span className="text-xl leading-relaxed text-white/80">
                 {t(`training.current.components.${key}`)}
               </span>
             </li>

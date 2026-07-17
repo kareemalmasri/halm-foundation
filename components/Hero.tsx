@@ -30,7 +30,7 @@ export default function Hero() {
         <h1 className="text-4xl font-bold leading-tight text-gold sm:text-5xl">
           {t("title")}
         </h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-white/70">
+        <p className="max-w-2xl text-xl leading-relaxed text-white/70">
           {t("description")}
         </p>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-4">

@@ -7,7 +7,7 @@ export default function ArchiveTrainingPage() {
   const t = useTranslations();
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-3xl">
         <Breadcrumb
           items={[
@@ -20,7 +20,7 @@ export default function ArchiveTrainingPage() {
         <h1 className="mt-6 text-4xl font-bold text-gold">
           {t("training.archive.title")}
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-white/70">
+        <p className="mt-4 text-xl leading-relaxed text-white/70">
           {t("training.archive.intro")}
         </p>
 

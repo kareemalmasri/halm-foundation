@@ -6,12 +6,12 @@ export default function AboutPage() {
   const t = useTranslations("about");
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-4xl font-bold text-gold sm:text-5xl">
           {t("hero.title")}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
+        <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/70">
           {t("hero.summary")}
         </p>
       </div>

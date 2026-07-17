@@ -6,7 +6,7 @@ export default function ContactPage() {
   const t = useTranslations();
 
   return (
-    <main className="flex-1 bg-ink px-6 py-20">
+    <main className="flex-1 bg-ink px-8 py-20">
       <div className="mx-auto max-w-2xl">
         <Breadcrumb
           items={[
@@ -19,7 +19,7 @@ export default function ContactPage() {
           <h1 className="text-4xl font-bold text-gold sm:text-5xl">
             {t("contact.hero.title")}
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-white/70">
             {t("contact.hero.summary")}
           </p>
         </div>
