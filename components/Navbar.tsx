@@ -34,7 +34,12 @@ export default function Navbar() {
 
   return (
     <header className="border-b border-gold/20 bg-ink">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+      {/*
+        قياسات ثابتة بالبكسل (لا rem) لكل عناصر الـNavbar، مطابقة لمظهره بالعربية —
+        لأن rem يتحدد بحجم جذر الصفحة (html)، الذي يختلف بين اللغتين (Amiri/Cormorant)،
+        فبقاء الـNavbar بحجم ثابت بغضّ النظر عن اللغة يتطلّب px صريحة بدل الوحدات النسبية.
+      */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-[17.6px] px-[26.4px] py-[17.6px]">
         {/* الشعار */}
         <Link
           href="/"
@@ -46,12 +51,12 @@ export default function Navbar() {
             width={500}
             height={500}
             priority
-            className="h-20 w-20"
+            className="h-[88px] w-[88px]"
           />
         </Link>
 
         {/* روابط سطح المكتب — تنقّل حقيقي لكل قسم */}
-        <nav className="hidden flex-wrap items-center gap-x-15 gap-y-2 text-base sm:flex">
+        <nav className="hidden flex-wrap items-center gap-x-[66px] gap-y-2 text-[20px] sm:flex">
           {NAV_SECTIONS.map((key) => renderLink(key))}
         </nav>
 
@@ -77,7 +82,7 @@ export default function Navbar() {
 
       {/* القائمة المنسدلة على الشاشات الصغيرة */}
       {open && (
-        <nav className="flex flex-col gap-3 border-t border-gold/20 px-6 py-4 text-base sm:hidden">
+        <nav className="flex flex-col gap-3 border-t border-gold/20 px-[26.4px] py-[17.6px] text-[20px] sm:hidden">
           {NAV_SECTIONS.map((key) => renderLink(key, () => setOpen(false)))}
         </nav>
       )}
