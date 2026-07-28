@@ -10,6 +10,13 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  experimental: {
+    // معطّل: كاش نظام الملفات لـTurbopack بوضع dev (مفعّل افتراضياً منذ v16.1.0)
+    // يسبّب أحياناً قراءة متزامنة لملف JSON بمنتصف كتابته (بعد إعادة تشغيل السيرفر
+    // أو تعديل ملف)، فيفشل JSON.parse بخطأ "Unexpected end of JSON input" —
+    // تعطيله يزيل هذا التسابق (race) على حساب سرعة إعادة الترجمة بين الجلسات فقط.
+    turbopackFileSystemCacheForDev: false,
+  },
 };
 
 export default withNextIntl(nextConfig);

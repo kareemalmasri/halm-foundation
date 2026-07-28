@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { NAV_SECTIONS, SECTION_HREFS, type NavSection } from "@/components/nav-sections";
@@ -17,6 +17,8 @@ const LINK_UNDERLINE =
 
 export default function Navbar() {
   const t = useTranslations();
+  const locale = useLocale();
+  const isAr = locale === "ar";
   const [open, setOpen] = useState(false);
 
   // كل الروابط تنقّل حقيقي إلى مسار قسمها (SECTION_HREFS)
@@ -41,8 +43,13 @@ export default function Navbar() {
         max-w-[1152px] بدل max-w-6xl (=72rem) تحديداً لهذا السبب: 72rem يعطي عرضاً مختلفاً
         فعلياً بين اللغتين (1152px إنجليزي مقابل 1267px عربي) بسبب تكبير font-size الجذر
         بالعربي، فتتفاوت كل الفجوات (شعار↔روابط↔مبدّل اللغة) رغم توازنها الداخلي.
+
+        dir="ltr" مثبّت هنا عمداً: الشعار ومبدّل اللغة يبقيان بمكانهما الفيزيائي
+        (شعار يسار، مبدّل يمين) بكلا اللغتين بدل انعكاسهما مع اتجاه الصفحة —
+        الـnav وحده يستعيد اتجاهه الطبيعي (rtl/ltr) بالأسفل ليبقى ترتيب/شكل
+        روابطه كما كان دون أي تغيير.
       */}
-      <div className="mx-auto flex max-w-[1152px] items-center justify-between px-[26.4px] py-[17.6px]">
+      <div dir="ltr" className="mx-auto flex max-w-[1152px] items-center justify-between px-[26.4px] py-[17.6px]">
         {/* الشعار */}
         <Link
           href="/"
@@ -59,14 +66,20 @@ export default function Navbar() {
         </Link>
 
         {/*
-          عرض ثابت بالبكسل للـnav (800px، يكفي أعرض محتوى إنجليزي فعلي مقيس ~796px)
-          + justify-end لتجميع الروابط عند الحافة الملاصقة لمبدّل اللغة —
+          عرض ثابت بالبكسل للـnav (800px، يكفي أعرض محتوى إنجليزي فعلي مقيس ~796px) —
           هكذا يبقى صندوق الـnav نفسه بنفس العرض بكلا اللغتين، فتوزيع justify-between
-          الخارجي (بين الشعار والـnav، وبين الـnav ومبدّل اللغة) يصبح متطابقاً أيضاً؛
-          أي مساحة فائضة (للعربي، محتواه أضيق) تظهر عند طرف الـnav المقابل للشعار،
-          لا عند الطرف الملاصق لمبدّل اللغة.
+          الخارجي (بين الشعار والـnav، وبين الـnav ومبدّل اللغة) يصبح متطابقاً أيضاً.
+
+          dir صريح هنا (rtl عربي / ltr إنجليزي) يستعيد ترتيب/شكل الروابط الطبيعي
+          رغم أن الحاوية الأب مثبّتة على dir="ltr" فوق — والمحاذاة (start/end) هنا
+          منطقية (تتبع dir الخاص بالـnav)، فتجمع الروابط دوماً عند الحافة الملاصقة
+          فعلياً لمبدّل اللغة (يمين، ثابت الآن)، وأي مساحة فائضة (عربي) تظهر عند
+          طرف الشعار (يسار).
         */}
-        <nav className="hidden w-[800px] shrink-0 flex-wrap items-center justify-end gap-x-[66px] gap-y-2 text-[20px] lg:flex">
+        <nav
+          dir={isAr ? "rtl" : "ltr"}
+          className={`hidden w-[800px] shrink-0 flex-wrap items-center justify-end gap-x-[66px] gap-y-2 text-[20px] lg:flex ${isAr ? "pl-[48px]" : ""}`}
+        >
           {NAV_SECTIONS.map((key) => renderLink(key))}
         </nav>
 
