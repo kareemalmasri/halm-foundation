@@ -207,6 +207,76 @@ export function AudioIcon(props: IconProps) {
   );
 }
 
+export function VideoIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="6" width="12.5" height="12" rx="2" />
+      <path d="m15.5 10.5 5-2.5v8l-5-2.5" />
+    </svg>
+  );
+}
+
+// ——— أيقونات مشغّل الفيديو ———
+// مملوءة (fill) لا محدَّدة (stroke)، لأن أزرار التحكم صغيرة وتُقرأ أوضح ممتلئة.
+
+export function PlayIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+    </svg>
+  );
+}
+
+export function PauseIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <rect x="7" y="5" width="3.5" height="14" rx="1" />
+      <rect x="13.5" y="5" width="3.5" height="14" rx="1" />
+    </svg>
+  );
+}
+
+export function VolumeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 14v-4h3l4-3.5v11L7 14H4Z" fill="currentColor" stroke="none" />
+      <path d="M15 9c1 .9 1.5 1.9 1.5 3s-.5 2.1-1.5 3" />
+      <path d="M17.5 6.5c1.8 1.4 2.7 3.3 2.7 5.5s-.9 4.1-2.7 5.5" />
+    </svg>
+  );
+}
+
+export function MutedIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 14v-4h3l4-3.5v11L7 14H4Z" fill="currentColor" stroke="none" />
+      <path d="m15 9.5 4.5 5M19.5 9.5l-4.5 5" />
+    </svg>
+  );
+}
+
+export function FullscreenIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 9V5.5c0-.83.67-1.5 1.5-1.5H9" />
+      <path d="M20 9V5.5c0-.83-.67-1.5-1.5-1.5H15" />
+      <path d="M4 15v3.5c0 .83.67 1.5 1.5 1.5H9" />
+      <path d="M20 15v3.5c0 .83-.67 1.5-1.5 1.5H15" />
+    </svg>
+  );
+}
+
+export function ExitFullscreenIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 4v3.5c0 .83-.67 1.5-1.5 1.5H4" />
+      <path d="M15 4v3.5c0 .83.67 1.5 1.5 1.5H20" />
+      <path d="M9 20v-3.5c0-.83-.67-1.5-1.5-1.5H4" />
+      <path d="M15 20v-3.5c0-.83.67-1.5 1.5-1.5H20" />
+    </svg>
+  );
+}
+
 export function GlobeIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
@@ -225,6 +295,7 @@ export const ARCHIVE_TYPE_ICONS: Record<
   photo: PhotoIcon,
   document: DocumentIcon,
   audio: AudioIcon,
+  video: VideoIcon,
 };
 
 export const SECTION_ICONS: Record<

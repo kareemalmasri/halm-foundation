@@ -20,6 +20,9 @@ model ArchiveItem {
   artisan       Artisan? @relation(fields: [artisanId], references: [id])
   location      String?
   fileUrl       String
+  // مصدر بجودة أعلى (اختياري) — يُستخدم حالياً لعناصر الفيديو ليتيح مبدّل الجودة
+  // في المشغّل (عادي/HD). حين يكون null يعرض المشغّل مصدراً واحداً بلا مبدّل.
+  fileUrlHd     String?
   createdAt     DateTime @default(now())
 }
 

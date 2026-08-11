@@ -37,3 +37,13 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/* ظهور متدرّج — يُستخدم لعرض الفيديو داخل نافذة الأرشيف (بلا دوران) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -3,9 +3,8 @@ import { getPathname } from "@/i18n/navigation";
 import { prisma } from "@/lib/prisma";
 import { normalizeType, normalizeEra } from "@/lib/archive-filters";
 import Breadcrumb from "@/components/Breadcrumb";
-import ArchiveCard from "@/components/ArchiveCard";
+import ArchiveGrid from "@/components/ArchiveGrid";
 import MemoryFilterBar from "@/components/MemoryFilterBar";
-import { ARCHIVE_TYPE_ICONS, DocumentIcon } from "@/components/icons";
 
 export default async function MemoryBankPage({
   params,
@@ -76,21 +75,18 @@ export default async function MemoryBankPage({
             </p>
           </div>
         ) : (
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => {
-              const Icon = ARCHIVE_TYPE_ICONS[item.type] ?? DocumentIcon;
-              return (
-                <ArchiveCard
-                  key={item.id}
-                  Icon={Icon}
-                  title={isAr ? item.titleAr : item.titleEn}
-                  description={isAr ? item.descriptionAr : item.descriptionEn}
-                  typeLabel={t(`types.${item.type}`)}
-                  eraLabel={item.era ? t(`eras.${item.era}`) : null}
-                />
-              );
-            })}
-          </div>
+          <ArchiveGrid
+            items={items.map((item) => ({
+              id: item.id,
+              type: item.type,
+              title: isAr ? item.titleAr : item.titleEn,
+              description: isAr ? item.descriptionAr : item.descriptionEn,
+              typeLabel: t(`types.${item.type}`),
+              eraLabel: item.era ? t(`eras.${item.era}`) : null,
+              fileUrl: item.fileUrl,
+              fileUrlHd: item.fileUrlHd,
+            }))}
+          />
         )}
       </div>
     </main>

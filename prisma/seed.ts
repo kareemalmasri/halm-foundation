@@ -67,8 +67,10 @@ const artisans = [
   },
 ];
 
-// عناصر أرشيف وهمية (14) — أنواع/عصور/مواضيع متنوعة
+// عناصر أرشيف وهمية (16) — أنواع/عصور/مواضيع متنوعة
 // artisanKey يربط العنصر بحرفيّ (اختياري)
+// fileUrl: مسار الوسيط الفعلي داخل public/archive (عيّنات تجريبية تُستبدل بوسائط المؤسسة لاحقاً)
+// fileUrlHd: مصدر بجودة أعلى — لعناصر الفيديو فقط، يفعّل مبدّل الجودة في المشغّل
 const items = [
   {
     type: "photo",
@@ -80,6 +82,7 @@ const items = [
     theme: "urban-life",
     location: "دمشق القديمة",
     artisanKey: null,
+    fileUrl: "/archive/souk.jpg",
   },
   {
     type: "photo",
@@ -91,6 +94,7 @@ const items = [
     theme: "crafts",
     location: "دمشق",
     artisanKey: "khattat",
+    fileUrl: "/archive/calligrapher.jpg",
   },
   {
     type: "document",
@@ -102,6 +106,7 @@ const items = [
     theme: "documents",
     location: "القيمرية",
     artisanKey: null,
+    fileUrl: "/archive/deed.jpg",
   },
   {
     type: "audio",
@@ -113,6 +118,7 @@ const items = [
     theme: "crafts",
     location: "سوق النحّاسين",
     artisanKey: "nappas",
+    fileUrl: "/archive/oral-copper.wav",
   },
   {
     type: "photo",
@@ -124,6 +130,7 @@ const items = [
     theme: "crafts",
     location: "دمشق",
     artisanKey: "nappas",
+    fileUrl: "/archive/tray.jpg",
   },
   {
     type: "document",
@@ -135,6 +142,7 @@ const items = [
     theme: "crafts",
     location: "دمشق",
     artisanKey: "moujawhir",
+    fileUrl: "/archive/manuscript.jpg",
   },
   {
     type: "photo",
@@ -146,6 +154,7 @@ const items = [
     theme: "crafts",
     location: "دمشق",
     artisanKey: "hariri",
+    fileUrl: "/archive/loom.jpg",
   },
   {
     type: "audio",
@@ -157,6 +166,7 @@ const items = [
     theme: "folklore",
     location: "دمشق القديمة",
     artisanKey: null,
+    fileUrl: "/archive/folk-chant.wav",
   },
   {
     type: "photo",
@@ -168,6 +178,7 @@ const items = [
     theme: "architecture",
     location: "الجامع الأموي",
     artisanKey: null,
+    fileUrl: "/archive/mosque.jpg",
   },
   {
     type: "document",
@@ -179,6 +190,7 @@ const items = [
     theme: "documents",
     location: "دمشق",
     artisanKey: null,
+    fileUrl: "/archive/letter.jpg",
   },
   {
     type: "photo",
@@ -190,6 +202,7 @@ const items = [
     theme: "crafts",
     location: "حلب",
     artisanKey: "armani",
+    fileUrl: "/archive/jewelry.jpg",
   },
   {
     type: "audio",
@@ -201,6 +214,7 @@ const items = [
     theme: "crafts",
     location: "دمشق",
     artisanKey: "moujawhir",
+    fileUrl: "/archive/interview-nazira.wav",
   },
   {
     type: "photo",
@@ -212,6 +226,7 @@ const items = [
     theme: "architecture",
     location: "دمشق القديمة",
     artisanKey: null,
+    fileUrl: "/archive/courtyard.jpg",
   },
   {
     type: "document",
@@ -223,6 +238,33 @@ const items = [
     theme: "urban-life",
     location: "دمشق",
     artisanKey: null,
+    fileUrl: "/archive/program.jpg",
+  },
+  {
+    type: "video",
+    titleAr: "المعلّم سليم ينقش صينية نحاسية",
+    titleEn: "Master Salim Engraving a Copper Tray",
+    descriptionAr: "توثيق مصوّر لخطوات النقش على النحاس بالأدوات اليدوية.",
+    descriptionEn: "A filmed record of the copper engraving process using hand tools.",
+    era: "contemporary",
+    theme: "crafts",
+    location: "سوق النحّاسين",
+    artisanKey: "nappas",
+    fileUrl: "/archive/craft-sd.mp4",
+    fileUrlHd: "/archive/craft-hd.mp4",
+  },
+  {
+    type: "video",
+    titleAr: "حياكة البروكار على النول اليدوي",
+    titleEn: "Weaving Brocade on the Hand Loom",
+    descriptionAr: "مقطع يوثّق حركة النول وتشابك خيوط الحرير والذهب.",
+    descriptionEn: "A clip documenting the loom's motion and the interlacing of silk and gold threads.",
+    era: "contemporary",
+    theme: "crafts",
+    location: "دمشق",
+    artisanKey: "hariri",
+    fileUrl: "/archive/craft-sd.mp4",
+    fileUrlHd: "/archive/craft-hd.mp4",
   },
 ];
 
@@ -246,7 +288,6 @@ async function main() {
     await prisma.archiveItem.create({
       data: {
         ...data,
-        fileUrl: "/archive/placeholder", // placeholder — لا ملفات فعلية بعد
         artisanId: artisanKey ? artisanIdByKey.get(artisanKey) : null,
       },
     });

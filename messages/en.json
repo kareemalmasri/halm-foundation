@@ -161,7 +161,27 @@
     "types": {
       "photo": "Photo",
       "document": "Document",
-      "audio": "Audio"
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "viewer": {
+      "open": "View item",
+      "close": "Close",
+      "loading": "Loading...",
+      "imageError": "The image could not be loaded",
+      "mediaError": "The file could not be loaded",
+      "noPreview": "No preview available for this item",
+      "play": "Play",
+      "pause": "Pause",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "volume": "Volume",
+      "seek": "Seek",
+      "fullscreen": "Fullscreen",
+      "exitFullscreen": "Exit fullscreen",
+      "quality": "Quality",
+      "qualitySd": "Standard",
+      "qualityHd": "High (HD)"
     },
     "eras": {
       "ottoman-late": "Late Ottoman",
