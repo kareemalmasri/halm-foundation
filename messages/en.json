@@ -12,7 +12,7 @@
   },
   "hero": {
     "title": "Reviving Damascus's Crafts & Living Memory",
-    "description": "A cultural foundation dedicated to preserving Damascus's artisanal heritage, training a new generation of craftspeople, and safeguarding the city's living memory for generations to come.",
+    "description": "Welcome to Damascene Dream — a leading cultural foundation reviving Damascus's heritage and turning it into living reality.",
     "ctaPrimary": "Explore Our Mission",
     "ctaSecondary": "Support Our Artisans"
   },
@@ -47,7 +47,7 @@
   "about": {
     "hero": {
       "title": "About Us",
-      "summary": "Damascene Dream is a nonprofit cultural foundation working to preserve Damascus's artisanal heritage and document the city's memory, through training, archiving, and community partnerships."
+      "summary": "A shared passion for Damascus's cultural identity — our roots, our people, and the values that guide us."
     },
     "links": {
       "story": "Our Story",
@@ -59,12 +59,12 @@
     },
     "story": {
       "title": "Our Story",
-      "paragraph1": "The idea for Damascene Dream began with a group of people passionate about Damascene heritage, who set out to document traditional crafts at risk of disappearing, after noticing a marked decline in practicing artisans and weak interest in passing these skills to new generations.",
-      "paragraph2": "Since our founding, we've built a network of artisans, volunteers, and partner institutions, and launched training and archiving programs aimed at faithfully preserving this living heritage and passing it on, while embracing contemporary tools and methods that keep it accessible to new generations."
+      "paragraph1": "How the idea was born from a love of Damascus, and grew into an active foundation.",
+      "paragraph2": "Our milestones, our growth, and the obstacles we turned into opportunities."
     },
     "team": {
       "title": "Our Team",
-      "intro": "A group of specialists and volunteers united by a shared passion for Damascene heritage.",
+      "intro": "A select group of experts and artists devoted to the foundation's vision.",
       "members": {
         "member1": { "name": "Layla Al-Halabi", "role": "Founder & Executive Director" },
         "member2": { "name": "Samer Kabbani", "role": "Head of Traditional Crafts" },
@@ -74,7 +74,7 @@
     },
     "vision": {
       "title": "Our Vision & Goals",
-      "intro": "We look forward to a future where Damascene crafts remain alive and thriving, and the city's memory is preserved and accessible to all.",
+      "intro": "Damascus as an everlasting cultural beacon — our vision for sustainability and global reach.",
       "goals": {
         "goal1": "Document endangered Damascene handicrafts before they disappear.",
         "goal2": "Train a new generation of artisans and pass on traditional skills.",
@@ -86,7 +86,7 @@
   "training": {
     "hero": {
       "title": "Training Center",
-      "summary": "Training programs that pass on Damascene and Armenian handicraft skills to a new generation of artisans, through hands-on workshops and a documented archive of past programs."
+      "summary": "The incubator passing the secrets of Damascene crafts from master artisans to a new generation."
     },
     "links": {
       "damascene": "Damascene Crafts",
@@ -100,7 +100,7 @@
     },
     "damascene": {
       "title": "Damascene Crafts",
-      "intro": "Training specialties preserving the finest Damascene handicrafts.",
+      "intro": "Specialized courses in traditional Damascene crafts, taught by skilled artisans.",
       "specialties": {
         "s1": { "title": "Damascene Calligraphy", "description": "Teaching Arabic calligraphy fundamentals in the traditional Damascene style." },
         "s2": { "title": "Mosaic Art", "description": "Assembling colored mosaic pieces in Damascene decorative patterns." },
@@ -111,7 +111,7 @@
     },
     "armenian": {
       "title": "Armenian Crafts",
-      "intro": "Training specialties preserving traditional Armenian handicrafts.",
+      "intro": "Training programs in venerable Armenian crafts and arts, preserving their unique skills.",
       "specialties": {
         "s1": { "title": "Silversmithing", "description": "Shaping jewelry and silver pieces using traditional Armenian techniques." },
         "s2": { "title": "Armenian Embroidery", "description": "Embroidering fabrics with inherited Armenian stitches and patterns." },
@@ -121,7 +121,7 @@
     },
     "archive": {
       "title": "Program Archive",
-      "intro": "A timeline of training programs delivered over the years.",
+      "intro": "An archive of past programs, graduates, and ten years of achievement.",
       "timeline": {
         "y2016": "Founding program to train beginner artisans.",
         "y2018": "Advanced workshops in Damascene engraving and ornamentation.",
@@ -133,7 +133,7 @@
     },
     "current": {
       "title": "2026 Program",
-      "description": "The 2026 program combines hands-on in-workshop training with field mentorship from experienced artisans, aiming to graduate a new cohort of skilled artisans ready to pass these crafts on in turn.",
+      "description": "Our innovative training agenda for the coming year, built for a new generation.",
       "componentsTitle": "Program Components",
       "components": {
         "c1": "Weekly hands-on workshops with experienced artisans.",
@@ -147,7 +147,7 @@
   "memoryBank": {
     "hero": {
       "title": "Memory Bank",
-      "summary": "A living archive gathering Damascus's photographs, documents, and audio recordings, preserving the city's stories and crafts for generations to come."
+      "summary": "Our project to document and archive Damascene heritage, protecting it for everyone."
     },
     "filters": {
       "heading": "Filter Results",
@@ -176,7 +176,7 @@
   "contact": {
     "hero": {
       "title": "Get in Touch",
-      "summary": "Have a question, a suggestion, or want to collaborate with us? Send us a message and we'll get back to you as soon as possible."
+      "summary": "Researchers, artists, or volunteers — our doors and channels are always open."
     },
     "fields": {
       "name": "Full Name",
