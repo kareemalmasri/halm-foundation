@@ -1,6 +1,12 @@
 // القيم المسموحة للفلاتر — تُطابق بذور قاعدة البيانات (seed) ومفاتيح الترجمة.
 // تُستخدم أيضاً للتحقّق من مدخلات URL قبل بنائها في شرط WHERE.
-export const ARCHIVE_TYPES = ["photo", "document", "audio", "video"] as const;
+export const ARCHIVE_TYPES = [
+  "photo",
+  "document",
+  "audio",
+  "video",
+  "event",
+] as const;
 export const ARCHIVE_ERAS = [
   "ottoman-late",
   "mandate",

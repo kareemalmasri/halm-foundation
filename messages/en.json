@@ -162,7 +162,8 @@
       "photo": "Photo",
       "document": "Document",
       "audio": "Audio",
-      "video": "Video"
+      "video": "Video",
+      "event": "Event & Exhibition"
     },
     "viewer": {
       "open": "View item",

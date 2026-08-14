@@ -216,6 +216,17 @@ export function VideoIcon(props: IconProps) {
   );
 }
 
+export function EventIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="5.5" width="17" height="15" rx="2" />
+      <path d="M3.5 9.5h17" />
+      <path d="M8 3.5v4M16 3.5v4" />
+      <circle cx="12" cy="14.5" r="2.5" />
+    </svg>
+  );
+}
+
 // ——— أيقونات مشغّل الفيديو ———
 // مملوءة (fill) لا محدَّدة (stroke)، لأن أزرار التحكم صغيرة وتُقرأ أوضح ممتلئة.
 
@@ -296,6 +307,7 @@ export const ARCHIVE_TYPE_ICONS: Record<
   document: DocumentIcon,
   audio: AudioIcon,
   video: VideoIcon,
+  event: EventIcon,
 };
 
 export const SECTION_ICONS: Record<

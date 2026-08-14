@@ -23,6 +23,8 @@ type ArchiveModalProps = {
 
 // الأنواع التي تُعرض كصورة (الوثيقة مسح ضوئي، فتُعامل معاملة الصورة)
 const IMAGE_TYPES = new Set(["photo", "document"]);
+// الأنواع التي تُعرض بمشغّل الفيديو — "event" (فعالية ومعرض) ملفاتها mp4 أيضاً
+const VIDEO_TYPES = new Set(["video", "event"]);
 const VIDEO_POSTER = "/archive/craft-poster.jpg";
 
 export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
@@ -36,7 +38,7 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
   const [imageFailed, setImageFailed] = useState(false);
 
   const isImage = IMAGE_TYPES.has(item.type);
-  const isVideo = item.type === "video";
+  const isVideo = VIDEO_TYPES.has(item.type);
   const isAudio = item.type === "audio";
   const Icon = ARCHIVE_TYPE_ICONS[item.type] ?? DocumentIcon;
 
