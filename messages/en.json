@@ -152,7 +152,7 @@
     "filters": {
       "heading": "Filter Results",
       "type": "Type",
-      "era": "Era",
+      "year": "Year",
       "all": "All",
       "apply": "Apply",
       "reset": "Reset",
@@ -183,11 +183,6 @@
       "quality": "Quality",
       "qualitySd": "Standard",
       "qualityHd": "High (HD)"
-    },
-    "eras": {
-      "ottoman-late": "Late Ottoman",
-      "mandate": "Mandate Era",
-      "contemporary": "Contemporary"
     },
     "empty": {
       "title": "No Results",

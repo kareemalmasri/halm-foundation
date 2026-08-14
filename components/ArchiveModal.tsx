@@ -11,9 +11,10 @@ export type ArchiveMediaItem = {
   type: string;
   title: string;
   typeLabel: string;
-  eraLabel?: string | null;
+  yearLabel?: string | null;
   fileUrl: string;
   fileUrlHd?: string | null;
+  thumbnailUrl?: string | null;
 };
 
 type ArchiveModalProps = {
@@ -37,6 +38,9 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
   const [flipped, setFlipped] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
+  // عناصر أرشيف الصور السنوي بلا عناوين — عندها تُعرض الصورة وحدها بلا أي نص،
+  // بدل ترك عنوان فارغ يحجز مساحة أو وضع نص بديل مكانه.
+  const hasTitle = item.title.trim().length > 0;
   const isImage = IMAGE_TYPES.has(item.type);
   const isVideo = VIDEO_TYPES.has(item.type);
   const isAudio = item.type === "audio";
@@ -154,23 +158,34 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
       onClick={onBackdropClick}
       role="dialog"
       aria-modal="true"
-      aria-labelledby={titleId}
+      // بلا عنوان مرئي يبقى للنافذة اسم وصول (aria-label) — غير مرئي فلا يخالف
+      // "الصورة فقط"، لكنه ضروري لقارئات الشاشة.
+      {...(hasTitle
+        ? { "aria-labelledby": titleId }
+        : { "aria-label": t("open") })}
     >
       <div ref={panelRef} className="my-auto w-full max-w-4xl">
-        {/* رأس النافذة: العنوان + زر الإغلاق */}
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h2
-              id={titleId}
-              className="text-2xl font-bold leading-snug text-gold sm:text-3xl"
-            >
-              {item.title}
-            </h2>
-            <p className="mt-1 text-sm text-white/60">
-              {item.typeLabel}
-              {item.eraLabel ? ` · ${item.eraLabel}` : ""}
-            </p>
-          </div>
+        {/* رأس النافذة: العنوان (إن وُجد) + زر الإغلاق.
+            بلا عنوان: يبقى زر الإغلاق وحده محاذياً للنهاية، بلا كتلة نصّية فارغة. */}
+        <div
+          className={`mb-4 flex items-start gap-4 ${
+            hasTitle ? "justify-between" : "justify-end"
+          }`}
+        >
+          {hasTitle && (
+            <div className="min-w-0">
+              <h2
+                id={titleId}
+                className="text-2xl font-bold leading-snug text-gold sm:text-3xl"
+              >
+                {item.title}
+              </h2>
+              <p className="mt-1 text-sm text-white/60">
+                {item.typeLabel}
+                {item.yearLabel ? ` · ${item.yearLabel}` : ""}
+              </p>
+            </div>
+          )}
 
           <button
             ref={closeRef}
@@ -195,9 +210,11 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
                 <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gold/15 text-gold">
                   <Icon className="h-8 w-8" />
                 </span>
-                <span className="text-center text-lg font-semibold">
-                  {item.title}
-                </span>
+                {hasTitle && (
+                  <span className="text-center text-lg font-semibold">
+                    {item.title}
+                  </span>
+                )}
               </div>
 
               {/* الوجه الخلفي — الصورة، مقلوبة مسبقاً 180° لتظهر معتدلة بعد الدوران */}

@@ -1,23 +1,38 @@
-import { getTranslations } from "next-intl/server";
-import { ARCHIVE_TYPES, ARCHIVE_ERAS } from "@/lib/archive-filters";
+"use client";
+
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import {
+  ARCHIVE_TYPES,
+  ARCHIVE_YEARS,
+  YEAR_FILTER_TYPE,
+} from "@/lib/archive-filters";
 
 type MemoryFilterBarProps = {
   // المسار المُلغَّم باللغة (مثل /ar/memory-bank) — وجهة إرسال النموذج
   action: string;
   selectedType: string;
-  selectedEra: string;
+  selectedYear: number | null;
   resultsCount: number;
 };
 
+const SELECT_CLASS =
+  "min-w-40 rounded-md border border-gold/30 bg-ink px-3 py-2 text-white";
+
 // شريط فلاتر يعمل عبر نموذج GET أصلي — يحدّث URL search params،
 // والصفحة (Server Component) تعيد الاستعلام من القاعدة بشرط WHERE مطابق.
-export default async function MemoryFilterBar({
+// عميل (client) لأن ظهور فلتر السنة يتبع اختيار النوع لحظياً قبل الإرسال.
+export default function MemoryFilterBar({
   action,
   selectedType,
-  selectedEra,
+  selectedYear,
   resultsCount,
 }: MemoryFilterBarProps) {
-  const t = await getTranslations("memoryBank");
+  const t = useTranslations("memoryBank");
+  const [type, setType] = useState(selectedType);
+
+  // فلتر السنة يخصّ أرشيف الصور وحده
+  const showYear = type === YEAR_FILTER_TYPE;
 
   return (
     <form
@@ -30,33 +45,36 @@ export default async function MemoryFilterBar({
           <span>{t("filters.type")}</span>
           <select
             name="type"
-            defaultValue={selectedType}
-            className="min-w-40 rounded-md border border-gold/30 bg-ink px-3 py-2 text-white"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className={SELECT_CLASS}
           >
             <option value="">{t("filters.all")}</option>
-            {ARCHIVE_TYPES.map((type) => (
-              <option key={type} value={type}>
-                {t(`types.${type}`)}
+            {ARCHIVE_TYPES.map((archiveType) => (
+              <option key={archiveType} value={archiveType}>
+                {t(`types.${archiveType}`)}
               </option>
             ))}
           </select>
         </label>
 
-        <label className="flex flex-col gap-1 text-sm text-white/70">
-          <span>{t("filters.era")}</span>
-          <select
-            name="era"
-            defaultValue={selectedEra}
-            className="min-w-40 rounded-md border border-gold/30 bg-ink px-3 py-2 text-white"
-          >
-            <option value="">{t("filters.all")}</option>
-            {ARCHIVE_ERAS.map((era) => (
-              <option key={era} value={era}>
-                {t(`eras.${era}`)}
-              </option>
-            ))}
-          </select>
-        </label>
+        {showYear && (
+          <label className="flex flex-col gap-1 text-sm text-white/70">
+            <span>{t("filters.year")}</span>
+            <select
+              name="year"
+              defaultValue={selectedYear ? String(selectedYear) : ""}
+              className={SELECT_CLASS}
+            >
+              <option value="">{t("filters.all")}</option>
+              {ARCHIVE_YEARS.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
 
         <button
           type="submit"
@@ -65,7 +83,7 @@ export default async function MemoryFilterBar({
           {t("filters.apply")}
         </button>
 
-        {(selectedType || selectedEra) && (
+        {(selectedType || selectedYear) && (
           <a
             href={action}
             className="rounded-md border border-gold/30 px-5 py-2 font-medium text-gold transition-colors hover:bg-gold/10"

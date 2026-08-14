@@ -7,14 +7,17 @@ export const ARCHIVE_TYPES = [
   "video",
   "event",
 ] as const;
-export const ARCHIVE_ERAS = [
-  "ottoman-late",
-  "mandate",
-  "contemporary",
+
+// سنوات أرشيف الصور — تنازلياً (الأحدث أولاً) كما تظهر في القائمة المنسدلة
+export const ARCHIVE_YEARS = [
+  2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016,
 ] as const;
 
+// فلتر السنة يخصّ أرشيف الصور فقط، فلا يظهر إلا مع هذا النوع
+export const YEAR_FILTER_TYPE = "photo";
+
 export type ArchiveType = (typeof ARCHIVE_TYPES)[number];
-export type ArchiveEra = (typeof ARCHIVE_ERAS)[number];
+export type ArchiveYear = (typeof ARCHIVE_YEARS)[number];
 
 // يعيد القيمة فقط إن كانت ضمن القائمة البيضاء، وإلا سلسلة فارغة (= بلا فلتر)
 export function normalizeType(value?: string): ArchiveType | "" {
@@ -23,8 +26,11 @@ export function normalizeType(value?: string): ArchiveType | "" {
     : "";
 }
 
-export function normalizeEra(value?: string): ArchiveEra | "" {
-  return (ARCHIVE_ERAS as readonly string[]).includes(value ?? "")
-    ? (value as ArchiveEra)
-    : "";
+// السنة تصل كنص من الـURL؛ تُقبل فقط إن طابقت إحدى السنوات المسموحة،
+// ويُعاد الرقم جاهزاً لشرط WHERE (الحقل Int في القاعدة) أو null بلا فلتر.
+export function normalizeYear(value?: string): ArchiveYear | null {
+  const parsed = Number(value);
+  return (ARCHIVE_YEARS as readonly number[]).includes(parsed)
+    ? (parsed as ArchiveYear)
+    : null;
 }

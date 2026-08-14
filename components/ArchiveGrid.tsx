@@ -10,6 +10,9 @@ type ArchiveGridItem = ArchiveMediaItem & {
   description?: string | null;
 };
 
+// الأنواع التي ملفّها صورة، فتصلح مصغّرةً على البطاقة
+const THUMBNAIL_TYPES = new Set(["photo", "document"]);
+
 export default function ArchiveGrid({ items }: { items: ArchiveGridItem[] }) {
   const t = useTranslations("memoryBank.viewer");
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -42,7 +45,13 @@ export default function ArchiveGrid({ items }: { items: ArchiveGridItem[] }) {
               title={item.title}
               description={item.description}
               typeLabel={item.typeLabel}
-              eraLabel={item.eraLabel}
+              yearLabel={item.yearLabel}
+              thumbnailUrl={
+                THUMBNAIL_TYPES.has(item.type)
+                  ? // المصغّرة إن وُجدت، وإلا الصورة الكاملة (عناصر قديمة بلا مصغّرة)
+                    (item.thumbnailUrl ?? item.fileUrl)
+                  : null
+              }
               openLabel={t("open")}
               onOpen={(trigger) => open(item.id, trigger)}
             />

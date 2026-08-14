@@ -14,7 +14,8 @@ model ArchiveItem {
   titleEn       String
   descriptionAr String?
   descriptionEn String?
-  era           String?
+  // سنة العنصر — حلّت محلّ era، ويُفلتَر بها أرشيف الصور (2016 فصاعداً)
+  year          Int?
   theme         String?
   artisanId     String?
   artisan       Artisan? @relation(fields: [artisanId], references: [id])
@@ -23,6 +24,9 @@ model ArchiveItem {
   // مصدر بجودة أعلى (اختياري) — يُستخدم حالياً لعناصر الفيديو ليتيح مبدّل الجودة
   // في المشغّل (عادي/HD). حين يكون null يعرض المشغّل مصدراً واحداً بلا مبدّل.
   fileUrlHd     String?
+  // نسخة مصغّرة خفيفة تُعرض في شبكة البطاقات — تمنع تحميل الصورة الكاملة
+  // لمجرّد استعراض الشبكة. حين تكون null تُستخدم fileUrl مباشرة.
+  thumbnailUrl  String?
   createdAt     DateTime @default(now())
 }
 

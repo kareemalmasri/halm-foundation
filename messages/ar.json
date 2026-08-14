@@ -152,7 +152,7 @@
     "filters": {
       "heading": "تصفية النتائج",
       "type": "النوع",
-      "era": "العصر",
+      "year": "السنة",
       "all": "الكل",
       "apply": "تطبيق",
       "reset": "إعادة تعيين",
@@ -183,11 +183,6 @@
       "quality": "الجودة",
       "qualitySd": "عادية",
       "qualityHd": "عالية (HD)"
-    },
-    "eras": {
-      "ottoman-late": "أواخر العهد العثماني",
-      "mandate": "عهد الانتداب",
-      "contemporary": "المعاصر"
     },
     "empty": {
       "title": "لا توجد نتائج",

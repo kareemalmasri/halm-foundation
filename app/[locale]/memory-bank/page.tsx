@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPathname } from "@/i18n/navigation";
 import { prisma } from "@/lib/prisma";
-import { normalizeType, normalizeEra } from "@/lib/archive-filters";
+import { normalizeType, normalizeYear } from "@/lib/archive-filters";
 import Breadcrumb from "@/components/Breadcrumb";
 import ArchiveGrid from "@/components/ArchiveGrid";
 import MemoryFilterBar from "@/components/MemoryFilterBar";
@@ -15,14 +15,14 @@ export default async function MemoryBankPage({
 
   const sp = await searchParams;
   const rawType = typeof sp.type === "string" ? sp.type : "";
-  const rawEra = typeof sp.era === "string" ? sp.era : "";
+  const rawYear = typeof sp.year === "string" ? sp.year : "";
   const type = normalizeType(rawType);
-  const era = normalizeEra(rawEra);
+  const year = normalizeYear(rawYear);
 
   // شرط WHERE حقيقي — يُبنى فقط من القيم المُتحقَّق منها (whitelist)
   const where = {
     ...(type ? { type } : {}),
-    ...(era ? { era } : {}),
+    ...(year ? { year } : {}),
   };
 
   const items = await prisma.archiveItem.findMany({
@@ -60,7 +60,7 @@ export default async function MemoryBankPage({
           <MemoryFilterBar
             action={action}
             selectedType={type}
-            selectedEra={era}
+            selectedYear={year}
             resultsCount={items.length}
           />
         </div>
@@ -82,9 +82,10 @@ export default async function MemoryBankPage({
               title: isAr ? item.titleAr : item.titleEn,
               description: isAr ? item.descriptionAr : item.descriptionEn,
               typeLabel: t(`types.${item.type}`),
-              eraLabel: item.era ? t(`eras.${item.era}`) : null,
+              yearLabel: item.year ? String(item.year) : null,
               fileUrl: item.fileUrl,
               fileUrlHd: item.fileUrlHd,
+              thumbnailUrl: item.thumbnailUrl,
             }))}
           />
         )}
