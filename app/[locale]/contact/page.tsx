@@ -27,6 +27,23 @@ export default function ContactPage() {
         <div className="mt-12">
           <ContactForm />
         </div>
+
+        <div className="mt-12">
+          <h2 className="mb-4 text-xl font-semibold text-gold">
+            {t("contact.map.heading")}
+          </h2>
+          {/*
+            Google Maps Embed (بلا مفتاح API) — رابط q=lat,lng&output=embed مباشر
+            عبر iframe بسيط، بلا أي مكتبة JS خارجية أو تكلفة.
+          */}
+          <iframe
+            src="https://www.google.com/maps?q=33.509833,36.318972&output=embed"
+            title={t("contact.map.iframeTitle")}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-[250px] w-full rounded-lg border border-gold/20 sm:h-[400px]"
+          />
+        </div>
       </div>
     </main>
   );

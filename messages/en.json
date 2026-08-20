@@ -206,6 +206,10 @@
     "errors": {
       "validation": "Please fill in your name and message, and make sure your email address is valid.",
       "generic": "We couldn't send your message right now. Please try again later."
+    },
+    "map": {
+      "heading": "Our Location",
+      "iframeTitle": "Damascene Dream Foundation location on the map"
     }
   },
   "news": {
