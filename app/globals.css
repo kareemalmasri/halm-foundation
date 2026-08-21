@@ -3,12 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* افتراضي (إنجليزي): Cormorant Garamond — بلا تكبير إضافي (النص الإنجليزي أطول عادةً فيحتاج مساحة أقل لكل حرف) */
   --font-body: var(--font-cormorant);
   font-size: 1rem;
 }
 
-/* عربي: Amiri — يُطبَّق تلقائياً على كل الموقع عبر --font-sans بلا تكرار بالمكوّنات */
 html[lang="ar"] {
   --font-body: var(--font-amiri);
   font-size: 1.1rem;
@@ -38,12 +36,66 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ظهور متدرّج — يُستخدم لعرض الفيديو داخل نافذة الأرشيف (بلا دوران) */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+/*
+  Sections marquee.
+
+  The track renders the card set twice; translating by exactly 50% of the
+  track width lands the second copy precisely where the first began, so the
+  loop repeats with no visible jump. Spacing uses margin-inline-end on every
+  card (not `gap`) to keep the pattern uniform across the seam — a `gap`
+  would leave the halves unequal and cause a stutter each cycle.
+
+  Direction matters: in LTR the track overflows to the right and must move
+  left to reveal later cards; in RTL it overflows to the left, so the motion
+  has to be mirrored or the strip would drift away into empty space.
+*/
+@keyframes marquee-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* Animation is desktop-only; below 640px the track stays a static column. */
+@media (min-width: 640px) {
+  .marquee-track {
+    animation: marquee-ltr 25s linear infinite;
+    will-change: transform;
+  }
+
+  [dir="rtl"] .marquee-track {
+    animation-name: marquee-rtl;
+  }
+
+  /* focus-within keeps a keyboard-focused card from sliding out of view. */
+  .marquee-viewport:hover .marquee-track,
+  .marquee-viewport:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
