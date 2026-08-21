@@ -1,9 +1,6 @@
 import { config as loadEnv } from "dotenv";
 import { PrismaClient } from "../generated/prisma/client";
 
-// سكربت إضافة فعلي — بخلاف seed.ts لا يمسح أي بيانات موجودة، فقط يُدخل هذه
-// العناصر الأربعة الحقيقية إن لم تكن موجودة مسبقاً (يعتمد على titleEn للتحقّق،
-// فيمكن تشغيله أكثر من مرة بأمان دون تكرار).
 loadEnv({ path: ".env.local" });
 
 const accelerateUrl = process.env.DATABASE_URL;
@@ -13,7 +10,6 @@ if (!accelerateUrl) {
 
 const prisma = new PrismaClient({ accelerateUrl });
 
-// أوصاف مؤقتة (وهمية) بانتظار استبدالها بمعلومات دقيقة لاحقاً — كما أوضح المستخدم
 const items = [
   {
     type: "event",

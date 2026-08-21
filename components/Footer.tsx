@@ -21,7 +21,6 @@ export default function Footer() {
             <button
               key={key}
               type="button"
-              // بلا وظيفة فعلية بعد — تصميم فقط، نفس نمط أزرار Hero
               aria-label={t(`footer.social.${key}`)}
               className="text-ivory/70 transition-colors hover:text-gold"
             >

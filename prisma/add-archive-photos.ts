@@ -3,14 +3,6 @@ import { join } from "node:path";
 import { config as loadEnv } from "dotenv";
 import { PrismaClient } from "../generated/prisma/client";
 
-// إدخال صور أرشيف سنة أو أكثر — يُشغَّل هكذا:
-//   npx tsx prisma/add-archive-photos.ts 2016
-//   npx tsx prisma/add-archive-photos.ts 2017 2018 2019
-//
-// لا يمسح أي بيانات (بخلاف seed.ts)، ويتحقّق من fileUrl قبل الإدخال فيمكن
-// تشغيله أكثر من مرة بأمان (idempotent) دون تكرار الصور — ويحدّث thumbnailUrl
-// للصفوف القديمة التي أُدخلت قبل توليد المصغّرات.
-// العناوين والأوصاف تُترك فارغة عمداً — تُملأ لاحقاً بمعلومات دقيقة.
 loadEnv({ path: ".env.local" });
 
 const accelerateUrl = process.env.DATABASE_URL;
@@ -40,7 +32,6 @@ async function importYear(year: number) {
 
     const existing = await prisma.archiveItem.findFirst({ where: { fileUrl } });
     if (existing) {
-      // صفوف أُدخلت قبل توليد المصغّرات — تُستكمل بلا تكرار
       if (existing.thumbnailUrl !== thumbnailUrl) {
         await prisma.archiveItem.update({
           where: { id: existing.id },

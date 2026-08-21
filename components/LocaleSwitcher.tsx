@@ -4,7 +4,6 @@ import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { GlobeIcon } from "@/components/icons";
 
-// aria-label بلغة الصفحة الحالية، يصف الانتقال إلى اللغة الأخرى
 const SWITCH_LABEL: Record<string, string> = {
   ar: "التبديل إلى الإنجليزية",
   en: "Switch to Arabic",
@@ -12,11 +11,10 @@ const SWITCH_LABEL: Record<string, string> = {
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
-  const pathname = usePathname(); // المسار بدون بادئة اللغة
+  const pathname = usePathname();
   const router = useRouter();
   const other = locale === "ar" ? "en" : "ar";
 
-  // الحرف يشير إلى اللغة الحالية المعروضة فعلياً، لا اللغة المقصودة
   const currentLetter = locale === "ar" ? "ع" : "E";
 
   return (

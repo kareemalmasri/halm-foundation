@@ -1,7 +1,6 @@
 import { config as loadEnv } from "dotenv";
 import { PrismaClient } from "../generated/prisma/client";
 
-// Prisma 7 لم يعد يحمّل متغيرات البيئة تلقائياً — نحمّلها يدوياً كما في prisma.config.ts
 loadEnv({ path: ".env.local" });
 
 const accelerateUrl = process.env.DATABASE_URL;
@@ -9,11 +8,8 @@ if (!accelerateUrl) {
   throw new Error("DATABASE_URL is not set (expected in .env.local)");
 }
 
-// عنوان القاعدة هو `prisma+postgres://...` (Prisma Postgres عبر Accelerate)،
-// لذا يُمرَّر كـ`accelerateUrl` كما يتطلّب عميل Prisma 7 المولَّد.
 const prisma = new PrismaClient({ accelerateUrl });
 
-// حرفيون وهميون (5) — بعضهم سيُربط بعناصر أرشيف
 const artisans = [
   {
     key: "khattat",
@@ -67,10 +63,6 @@ const artisans = [
   },
 ];
 
-// عناصر أرشيف وهمية (16) — أنواع/عصور/مواضيع متنوعة
-// artisanKey يربط العنصر بحرفيّ (اختياري)
-// fileUrl: مسار الوسيط الفعلي داخل public/archive (عيّنات تجريبية تُستبدل بوسائط المؤسسة لاحقاً)
-// fileUrlHd: مصدر بجودة أعلى — لعناصر الفيديو فقط، يفعّل مبدّل الجودة في المشغّل
 const items = [
   {
     type: "photo",
@@ -255,11 +247,9 @@ const items = [
 async function main() {
   console.log("🌱 بدء عملية الإدخال (seed)...");
 
-  // تنظيف البيانات القديمة أولاً (ArchiveItem قبل Artisan بسبب المفتاح الأجنبي)
   await prisma.archiveItem.deleteMany();
   await prisma.artisan.deleteMany();
 
-  // إدخال الحرفيين والاحتفاظ بخريطة key -> id
   const artisanIdByKey = new Map<string, string>();
   for (const { key, ...data } of artisans) {
     const created = await prisma.artisan.create({ data });
@@ -267,7 +257,6 @@ async function main() {
   }
   console.log(`✓ أُدخل ${artisans.length} حرفيين.`);
 
-  // إدخال عناصر الأرشيف مع ربط الحرفيّ حين يوجد
   for (const { artisanKey, ...data } of items) {
     await prisma.archiveItem.create({
       data: {

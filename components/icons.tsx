@@ -227,9 +227,6 @@ export function EventIcon(props: IconProps) {
   );
 }
 
-// ——— أيقونات مشغّل الفيديو ———
-// مملوءة (fill) لا محدَّدة (stroke)، لأن أزرار التحكم صغيرة وتُقرأ أوضح ممتلئة.
-
 export function PlayIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -298,7 +295,6 @@ export function GlobeIcon(props: IconProps) {
   );
 }
 
-// أيقونة نوع عنصر الأرشيف حسب `type`
 export const ARCHIVE_TYPE_ICONS: Record<
   string,
   (props: IconProps) => React.JSX.Element

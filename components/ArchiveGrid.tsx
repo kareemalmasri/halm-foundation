@@ -10,19 +10,15 @@ type ArchiveGridItem = ArchiveMediaItem & {
   description?: string | null;
 };
 
-// الأنواع التي ملفّها صورة، فتصلح مصغّرةً على البطاقة
 const THUMBNAIL_TYPES = new Set(["photo", "document"]);
 
 export default function ArchiveGrid({ items }: { items: ArchiveGridItem[] }) {
   const t = useTranslations("memoryBank.viewer");
   const [activeId, setActiveId] = useState<string | null>(null);
-  // مرجع البطاقة التي فتحت النافذة — لإعادة التركيز إليها عند الإغلاق (وصولية)
   const triggerRef = useRef<HTMLElement | null>(null);
 
   const active = items.find((i) => i.id === activeId) ?? null;
 
-  // نحتفظ بعنصر البطاقة نفسه (لا document.activeElement): النقر بالفأرة قد لا
-  // ينقل التركيز إليها، فيضيع مرجع العودة عند الإغلاق.
   const open = useCallback((id: string, trigger: HTMLElement) => {
     triggerRef.current = trigger;
     setActiveId(id);
@@ -48,8 +44,7 @@ export default function ArchiveGrid({ items }: { items: ArchiveGridItem[] }) {
               yearLabel={item.yearLabel}
               thumbnailUrl={
                 THUMBNAIL_TYPES.has(item.type)
-                  ? // المصغّرة إن وُجدت، وإلا الصورة الكاملة (عناصر قديمة بلا مصغّرة)
-                    (item.thumbnailUrl ?? item.fileUrl)
+                  ? (item.thumbnailUrl ?? item.fileUrl)
                   : null
               }
               openLabel={t("open")}
@@ -59,8 +54,6 @@ export default function ArchiveGrid({ items }: { items: ArchiveGridItem[] }) {
         })}
       </div>
 
-      {/* نسخة واحدة فقط من النافذة، تُركَّب عند الفتح وتُفكَّك عند الإغلاق —
-          فلا تُحمَّل أي وسائط قبل الطلب، ويتوقف الفيديو حتماً عند الإغلاق. */}
       {active && <ArchiveModal item={active} onClose={close} />}
     </>
   );

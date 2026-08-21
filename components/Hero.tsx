@@ -6,7 +6,6 @@ export default function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-ink px-6 py-16 sm:min-h-[640px] sm:py-20">
-      {/* صورة الخلفية — next/image بخاصية fill */}
       <Image
         src="/images/hero-background.png"
         alt=""
@@ -17,7 +16,6 @@ export default function Hero() {
         className="-z-10"
       />
 
-      {/* طبقة تعتيم داكنة متدرّجة تتزايد نحو المنتصف والأسفل */}
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -34,7 +32,6 @@ export default function Hero() {
           {t("description")}
         </p>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
-          {/* بلا وظيفة فعلية بعد — تصميم فقط */}
           <button
             type="button"
             className="rounded bg-gold px-6 py-3 font-semibold text-ink transition-opacity hover:opacity-90"

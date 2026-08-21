@@ -22,9 +22,7 @@ type ArchiveModalProps = {
   onClose: () => void;
 };
 
-// الأنواع التي تُعرض كصورة (الوثيقة مسح ضوئي، فتُعامل معاملة الصورة)
 const IMAGE_TYPES = new Set(["photo", "document"]);
-// الأنواع التي تُعرض بمشغّل الفيديو — "event" (فعالية ومعرض) ملفاتها mp4 أيضاً
 const VIDEO_TYPES = new Set(["video", "event"]);
 const VIDEO_POSTER = "/archive/craft-poster.jpg";
 
@@ -38,8 +36,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
   const [flipped, setFlipped] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
-  // عناصر أرشيف الصور السنوي بلا عناوين — عندها تُعرض الصورة وحدها بلا أي نص،
-  // بدل ترك عنوان فارغ يحجز مساحة أو وضع نص بديل مكانه.
   const hasTitle = item.title.trim().length > 0;
   const isImage = IMAGE_TYPES.has(item.type);
   const isVideo = VIDEO_TYPES.has(item.type);
@@ -48,9 +44,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
 
   useEffect(() => setMounted(true), []);
 
-  // ——— أنيميشن القلب ———
-  // نحمّل الصورة أولاً ثم نقلب، حتى لا ينكشف وجه فارغ في منتصف الدوران.
-  // ومع تفضيل تقليل الحركة (prefers-reduced-motion) نتخطّى الدوران فوراً.
   useEffect(() => {
     if (!isImage) return;
 
@@ -68,8 +61,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
         setFlipped(true);
         return;
       }
-      // إطارين متتاليين: يضمنان أن المتصفح رسم الوجه الأمامي قبل بدء الانتقال،
-      // وإلا قفز العنصر للحالة النهائية بلا حركة.
       raf = requestAnimationFrame(() =>
         requestAnimationFrame(() => !cancelled && setFlipped(true))
       );
@@ -87,7 +78,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
     };
   }, [isImage, item.fileUrl]);
 
-  // ——— إغلاق بمفتاح Escape + حصر التنقّل بلوحة المفاتيح داخل النافذة ———
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -119,8 +109,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [onClose]);
 
-  // ——— قفل تمرير الصفحة خلف النافذة، مع تعويض عرض شريط التمرير ———
-  // بدون التعويض يقفز عرض الصفحة أفقياً لحظة الفتح على سطح المكتب.
   useEffect(() => {
     const { body, documentElement } = document;
     const prevOverflow = body.style.overflow;
@@ -136,9 +124,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
     };
   }, []);
 
-  // نقل التركيز إلى زر الإغلاق عند الفتح، وإعادته لعنصر الاستدعاء يتكفّل به الأب.
-  // يعتمد على mounted لا على [] فقط: قبل التركيب لا تكون البوّابة (portal) قد رُسمت
-  // بعد، فيكون closeRef فارغاً ولا يحدث تركيز إطلاقاً.
   useEffect(() => {
     if (mounted) closeRef.current?.focus();
   }, [mounted]);
@@ -158,15 +143,11 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
       onClick={onBackdropClick}
       role="dialog"
       aria-modal="true"
-      // بلا عنوان مرئي يبقى للنافذة اسم وصول (aria-label) — غير مرئي فلا يخالف
-      // "الصورة فقط"، لكنه ضروري لقارئات الشاشة.
       {...(hasTitle
         ? { "aria-labelledby": titleId }
         : { "aria-label": t("open") })}
     >
       <div ref={panelRef} className="my-auto w-full max-w-4xl">
-        {/* رأس النافذة: العنوان (إن وُجد) + زر الإغلاق.
-            بلا عنوان: يبقى زر الإغلاق وحده محاذياً للنهاية، بلا كتلة نصّية فارغة. */}
         <div
           className={`mb-4 flex items-start gap-4 ${
             hasTitle ? "justify-between" : "justify-end"
@@ -198,14 +179,12 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
           </button>
         </div>
 
-        {/* ——— صورة/وثيقة: دوران ثلاثي الأبعاد 180° حول المحور Y ——— */}
         {isImage && (
           <div className="[perspective:1600px]">
             <div
               className="relative transition-transform duration-[520ms] ease-in-out [transform-style:preserve-3d] motion-reduce:transition-none"
               style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
             >
-              {/* الوجه الأمامي — يحاكي هيئة البطاقة نفسها فيبدو أنها هي التي انقلبت */}
               <div className="flex aspect-[3/2] w-full flex-col items-center justify-center gap-4 rounded-lg bg-ivory p-6 text-ink [backface-visibility:hidden]">
                 <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gold/15 text-gold">
                   <Icon className="h-8 w-8" />
@@ -217,7 +196,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
                 )}
               </div>
 
-              {/* الوجه الخلفي — الصورة، مقلوبة مسبقاً 180° لتظهر معتدلة بعد الدوران */}
               <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                 {imageFailed ? (
                   <div className="flex h-full w-full items-center justify-center rounded-lg border border-gold/30 bg-ink/60 p-6 text-center">
@@ -237,7 +215,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
           </div>
         )}
 
-        {/* ——— فيديو: بلا دوران، ظهور متدرّج فقط ——— */}
         {isVideo && (
           <div className="animate-[fadeIn_320ms_ease-out] motion-reduce:animate-none">
             <VideoPlayer
@@ -249,7 +226,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
           </div>
         )}
 
-        {/* ——— صوت ——— */}
         {isAudio && (
           <div className="flex flex-col items-center gap-6 rounded-lg bg-ivory p-8">
             <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gold/15 text-gold">
@@ -264,7 +240,6 @@ export default function ArchiveModal({ item, onClose }: ArchiveModalProps) {
           </div>
         )}
 
-        {/* نوع غير معروف — حالة بديلة أنيقة بدل واجهة مكسورة */}
         {!isImage && !isVideo && !isAudio && (
           <div className="flex aspect-video w-full items-center justify-center rounded-lg border border-gold/30 bg-ink/60 p-6 text-center">
             <p className="text-white/70">{t("noPreview")}</p>

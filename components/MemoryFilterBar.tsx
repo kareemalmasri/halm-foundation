@@ -9,7 +9,6 @@ import {
 } from "@/lib/archive-filters";
 
 type MemoryFilterBarProps = {
-  // المسار المُلغَّم باللغة (مثل /ar/memory-bank) — وجهة إرسال النموذج
   action: string;
   selectedType: string;
   selectedYear: number | null;
@@ -19,9 +18,6 @@ type MemoryFilterBarProps = {
 const SELECT_CLASS =
   "min-w-40 rounded-md border border-gold/30 bg-ink px-3 py-2 text-white";
 
-// شريط فلاتر يعمل عبر نموذج GET أصلي — يحدّث URL search params،
-// والصفحة (Server Component) تعيد الاستعلام من القاعدة بشرط WHERE مطابق.
-// عميل (client) لأن ظهور فلتر السنة يتبع اختيار النوع لحظياً قبل الإرسال.
 export default function MemoryFilterBar({
   action,
   selectedType,
@@ -31,7 +27,6 @@ export default function MemoryFilterBar({
   const t = useTranslations("memoryBank");
   const [type, setType] = useState(selectedType);
 
-  // فلتر السنة يخصّ أرشيف الصور وحده
   const showYear = type === YEAR_FILTER_TYPE;
 
   return (

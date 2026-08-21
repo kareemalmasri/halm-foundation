@@ -2,17 +2,6 @@ import sharp from "sharp";
 import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-/*
-  يحوّل صور الأرشيف الأصلية (بأحجام تصوير كاملة) إلى نسختين مهيّأتين للويب:
-
-    public/archive/photos/<سنة>/<سنة>-NNN.jpg          عرض أقصى 1920px، جودة 82
-    public/archive/photos/<سنة>/thumbs/<سنة>-NNN.jpg   عرض أقصى 600px،  جودة 78
-
-  التشغيل:
-    node scripts/optimize-archive-photos.mjs 2017            سنة واحدة
-    node scripts/optimize-archive-photos.mjs 2017 2018 2019  عدة سنوات
-*/
-
 const SOURCE_BASE = "C:/Users/Kareem/Desktop/The Datawebsite/برامج 2016 -2026";
 const OUTPUT_BASE = join(process.cwd(), "public", "archive", "photos");
 
@@ -53,9 +42,6 @@ async function optimizeYear(year) {
     const displayPath = join(outDir, name);
     const thumbPath = join(thumbDir, name);
 
-    // .rotate() بلا وسائط يطبّق دوران EXIF تلقائياً — بدونها تظهر الصور
-    // العمودية الملتقطة بالهاتف مائلة على جنبها.
-    // withoutEnlargement يمنع تكبير الصور الأصغر من الحد فيتجنّب فقدان الحدّة.
     await sharp(sourcePath)
       .rotate()
       .resize({ width: DISPLAY_WIDTH, withoutEnlargement: true })

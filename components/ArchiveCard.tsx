@@ -11,7 +11,6 @@ type ArchiveCardProps = {
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
   onOpen: (trigger: HTMLElement) => void;
   openLabel: string;
-  // صورة مصغّرة تُعرض على البطاقة حين يكون العنصر صورة/وثيقة
   thumbnailUrl?: string | null;
 };
 
@@ -32,8 +31,6 @@ export default function ArchiveCard({
   const showThumb = Boolean(thumbnailUrl) && !thumbFailed;
 
   return (
-    // البطاقة بأكملها زرّ واحد — يجعل كامل مساحتها قابلة للضغط (لا زر منفصل)،
-    // ويمنح مجاناً دعم لوحة المفاتيح (Enter/Space) ودلالات وصول صحيحة.
     <button
       type="button"
       onClick={(e) => onOpen(e.currentTarget)}
@@ -41,17 +38,12 @@ export default function ArchiveCard({
       className="group flex h-full w-full cursor-pointer flex-col gap-4 overflow-hidden rounded-lg bg-ivory p-6 text-start text-ink transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:hover:translate-y-0"
     >
       {showThumb && (
-        // loading="lazy" ضروري هنا: الشبكة قد تحوي مئات الصور بسنة واحدة،
-        // فلا تُحمَّل إلا عند اقترابها من إطار العرض.
         <img
           src={thumbnailUrl as string}
           alt=""
           loading="lazy"
           decoding="async"
           onError={() => setThumbFailed(true)}
-          // عرض ممتدّ لحواف البطاقة: الهوامش السالبة تلغي حشوة p-6 والعرض يعوّضها.
-          // max-w-none ضروري — preflight في Tailwind يضع max-width:100% على الصور،
-          // فيقصّ الـcalc ويعيدها لعرض المحتوى. وفي calc تُكتب المسافات كشرطات سفلية.
           className="-mx-6 -mt-6 aspect-[4/3] w-[calc(100%_+_3rem)] max-w-none object-cover"
         />
       )}
@@ -65,7 +57,6 @@ export default function ArchiveCard({
         </span>
       </div>
 
-      {/* العنوان/الوصف يُحذفان تماماً حين يكونان فارغين، فلا تبقى مساحة معلّقة */}
       {hasTitle && <h3 className="text-xl font-semibold text-ink">{title}</h3>}
 
       {hasDescription && (

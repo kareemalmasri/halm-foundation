@@ -23,12 +23,10 @@ export default async function LocaleLayout({
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
 
-  // اللغات غير المدعومة تُعيد 404
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  // يفعّل التصيير الساكن لهذه اللغة
   setRequestLocale(locale);
 
   const messages = await getMessages();

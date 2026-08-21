@@ -19,7 +19,6 @@ export default async function MemoryBankPage({
   const type = normalizeType(rawType);
   const year = normalizeYear(rawYear);
 
-  // شرط WHERE حقيقي — يُبنى فقط من القيم المُتحقَّق منها (whitelist)
   const where = {
     ...(type ? { type } : {}),
     ...(year ? { year } : {}),
@@ -34,7 +33,6 @@ export default async function MemoryBankPage({
   const tNav = await getTranslations("navbar");
   const isAr = locale === "ar";
 
-  // المسار المُلغَّم باللغة لإرسال نموذج الفلاتر إليه
   const action = getPathname({ href: "/memory-bank", locale });
 
   return (
